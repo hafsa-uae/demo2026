@@ -88,18 +88,20 @@
     <nav class="fixed w-full z-50 bg-[#0f1016]/80 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <img src="logo.png" alt="SIS Logo" class="h-10 w-10 object-contain logo-shadow">
+                <img src="logo.png" alt="SIS Logo" class="h-10 w-10 object-contain logo-shadow" onerror="this.src='https://via.placeholder.com/40x40/FF6D5A/FFFFFF?text=SIS'">
                 <div class="flex flex-col leading-tight hidden sm:block">
-
-                  <span class="text-[9px] font-bold text-white tracking-tight">SIS - Saidi Intelligent Systems</span>              
-               <!--     <span class="text-[9px] font-bold text-zinc-500 tracking-[0.2em] uppercase">SIS - Saidi Intelligent Systems</span>
-            -->    </div>
+                  <span class="text-[9px] font-bold text-white tracking-tight">SIS - Saidi Intelligent Systems</span>      
+                </div>
             </div>
+            
             <div class="hidden md:flex space-x-reverse space-x-8">
+                <a href="#" class="text-zinc-300 hover:text-n8n-orange transition font-medium">الرئيسية</a>
                 <a href="#services" class="text-zinc-300 hover:text-n8n-orange transition font-medium">خدماتنا</a>
+                <a href="#pricing" class="text-zinc-300 hover:text-n8n-orange transition font-medium">الأسعار</a>
                 <a href="#stats" class="text-zinc-300 hover:text-n8n-orange transition font-medium">إحصائيات</a>
                 <a href="#contact" class="text-zinc-300 hover:text-n8n-orange transition font-medium">تواصل معنا</a>
             </div>
+
             <a href="#contact" class="bg-gradient-to-r from-n8n-orange to-n8n-red text-white px-6 py-2 rounded-lg text-sm font-bold transition glow-button">
                 ابدأ رحلتك
             </a>
@@ -180,6 +182,89 @@
         </div>
     </section>
 
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 relative z-10 bg-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">خطط استثمار مرنة</h2>
+                <p class="text-zinc-400">اختر الخطة التي تناسب حجم طموحك وعملك</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Basic Plan -->
+                <div class="glass-card p-8 rounded-3xl border-white/5 flex flex-col">
+                    <h3 class="text-xl font-bold text-white mb-2">البداية الذكية</h3>
+                    <p class="text-zinc-500 text-sm mb-6">للمشاريع الصغيرة والناشئة</p>
+                    <div class="text-4xl font-bold text-white mb-6">$499 <span class="text-sm font-normal text-zinc-500">/مشروع</span></div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-2 text-zinc-300 text-sm italic italic">
+                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            أتمتة حتى 3 عمليات أساسية
+                        </li>
+                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
+                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            ربط حتى 5 تطبيقات مختلفة
+                        </li>
+                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
+                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            دعم فني عبر البريد
+                        </li>
+                    </ul>
+                    <a href="#contact" class="w-full text-center py-3 rounded-xl border border-zinc-700 text-white hover:bg-white/5 transition font-bold">ابدأ الآن</a>
+                </div>
+
+                <!-- Pro Plan (Highlighted) -->
+                <div class="glass-card p-8 rounded-3xl border-n8n-orange/50 relative overflow-hidden flex flex-col scale-105 z-20 bg-n8n-dark">
+                    <div class="absolute top-0 right-0 bg-n8n-orange text-white px-4 py-1 text-xs font-bold rounded-bl-xl">الأكثر طلباً</div>
+                    <h3 class="text-xl font-bold text-white mb-2">احتراف الأتمتة</h3>
+                    <p class="text-zinc-500 text-sm mb-6">للوكالات والشركات المتوسطة</p>
+                    <div class="text-4xl font-bold text-white mb-6">$1,299 <span class="text-sm font-normal text-zinc-500">/مشروع</span></div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-2 text-zinc-300 text-sm font-bold italic">
+                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            أتمتة عمليات غير محدودة
+                        </li>
+                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
+                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            دمج وكلاء الذكاء الاصطناعي (AI)
+                        </li>
+                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
+                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            تدريب الفريق على النظام
+                        </li>
+                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
+                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            أولوية في الدعم الفني
+                        </li>
+                    </ul>
+                    <a href="#contact" class="w-full text-center py-4 rounded-xl bg-n8n-orange text-white hover:bg-n8n-red transition font-bold glow-button">اطلبها الآن</a>
+                </div>
+
+                <!-- Custom Plan -->
+                <div class="glass-card p-8 rounded-3xl border-white/5 flex flex-col">
+                    <h3 class="text-xl font-bold text-white mb-2">مخصص (Enterprise)</h3>
+                    <p class="text-zinc-500 text-sm mb-6">حلول شاملة للمنظمات الكبيرة</p>
+                    <div class="text-4xl font-bold text-white mb-6">تواصل معنا</div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
+                            <svg class="w-5 h-5 text-n8n-purple" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            بنية تحتية خاصة (On-premise)
+                        </li>
+                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
+                            <svg class="w-5 h-5 text-n8n-purple" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            أنظمة أمان متقدمة
+                        </li>
+                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
+                            <svg class="w-5 h-5 text-n8n-purple" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            إدارة كاملة للسيرفرات
+                        </li>
+                    </ul>
+                    <a href="#contact" class="w-full text-center py-3 rounded-xl border border-zinc-700 text-white hover:bg-white/5 transition font-bold">تواصل للمزيد</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Stats Section -->
     <section id="stats" class="py-20 border-y border-white/5 bg-[#0f1016] relative z-10">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -241,9 +326,9 @@
     <!-- Footer -->
     <footer class="py-16 border-t border-white/5 text-center relative z-10 bg-[#0f1016]">
         <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
-            <img src="logo.png" alt="SIS Footer Logo" class="h-12 w-12 object-contain mb-4 opacity-80 grayscale hover:grayscale-0 transition duration-500">
+            <img src="logo.png" alt="SIS Footer Logo" class="h-12 w-12 object-contain mb-4 opacity-80 grayscale hover:grayscale-0 transition duration-500" onerror="this.src='https://via.placeholder.com/48x48/555/FFF?text=SIS'">
             <div class="text-xl font-bold mb-2 text-white">
-               SIS - Saidi Intelligent Systems
+                SIS - Saidi Intelligent Systems
             </div>
             <p class="text-zinc-500 text-xs tracking-widest uppercase mb-8">Empowering business with smart workflows</p>
             <div class="flex space-x-reverse space-x-6 text-zinc-500 text-sm mb-8">
@@ -262,21 +347,26 @@
             document.getElementById('messageBox').classList.remove('hidden');
         });
 
-        window.addEventListener('scroll', function() {
+        // Simplified Intersection Observer for Reveal Animations
+        const reveal = () => {
             const elements = document.querySelectorAll('.glass-card');
             elements.forEach(el => {
                 const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) {
+                if (rect.top < window.innerHeight - 50) {
                     el.style.opacity = '1';
                     el.style.transform = 'translateY(0)';
                 }
             });
-        });
+        };
 
-        document.querySelectorAll('.glass-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+        window.addEventListener('scroll', reveal);
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.glass-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+            });
+            reveal();
         });
     </script>
 </body>
