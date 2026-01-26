@@ -90,7 +90,7 @@
             <div class="flex items-center gap-3">
                 <img src="logo.png" alt="SIS Logo" class="h-10 w-10 object-contain logo-shadow" onerror="this.src='https://via.placeholder.com/40x40/FF6D5A/FFFFFF?text=SIS'">
                 <div class="flex flex-col leading-tight hidden sm:block">
-                  <span class="text-[14px] font-bold text-white tracking-tight">SIS - Saidi Intelligent Systems</span>      
+                  <span class="text-[16px] font-bold text-white tracking-tight">SIS - Saidi Intelligent Systems</span>      
                 </div>
             </div>
             
@@ -197,7 +197,7 @@
                     <p class="text-zinc-500 text-sm mb-6">للمشاريع الصغيرة والناشئة</p>
                     <div class="text-4xl font-bold text-white mb-6">$499 <span class="text-sm font-normal text-zinc-500">/مشروع</span></div>
                     <ul class="space-y-4 mb-8 flex-grow">
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm italic italic">
+                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
                             <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
                             أتمتة حتى 3 عمليات أساسية
                         </li>
@@ -340,6 +340,24 @@
         </div>
     </footer>
 
+    <!-- Chatwoot SDK -->
+    <script>
+      (function(d,t) {
+        var BASE_URL="https://chatwoot.panel.saidiautomation.com";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'yK5T5wqrk63AMZPqb9EwnSYg',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
+    </script>
+
+    <!-- UI Interaction Scripts -->
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
