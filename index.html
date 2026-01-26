@@ -8,50 +8,107 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        n8n: {
+                            orange: '#FF6D5A',
+                            red: '#EA4B71',
+                            purple: '#9052DE',
+                            dark: '#0f1016',
+                            card: '#181920'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body {
             font-family: 'Tajawal', sans-serif;
             scroll-behavior: smooth;
+            background-color: #0f1016;
+            color: #e2e8f0;
         }
+
+        /* n8n Style Grid Background */
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px),
+                              linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            opacity: 0.15;
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
         .hero-gradient {
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            background: radial-gradient(circle at center, #1c1d29 0%, #0f1016 100%);
         }
+
         .glass-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
+
         .glow-button {
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 15px rgba(255, 109, 90, 0.3); /* Orange glow */
         }
+        
         .glow-button:hover {
-            box-shadow: 0 0 25px rgba(59, 130, 246, 0.8);
+            box-shadow: 0 0 25px rgba(255, 109, 90, 0.6);
             transform: translateY(-2px);
         }
-        .logo-glow {
-            filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.4));
+
+        .input-dark {
+            background-color: #13141b;
+            border-color: #2d2d3a;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f1016;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF6D5A;
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-200">
+<body class="relative">
 
     <!-- Header -->
-    <nav class="fixed w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+    <nav class="fixed w-full z-50 bg-[#0f1016]/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-4">
-                <img src="logo.png">
+                <!-- Placeholder for Logo -->
+                <div class="w-10 h-10 bg-gradient-to-br from-n8n-orange to-n8n-red rounded-lg flex items-center justify-center font-bold text-white shadow-lg shadow-n8n-orange/20">
+                    SIS
+                </div>
                 <div class="flex flex-col leading-tight hidden sm:block">
-                    <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">SIS</span>
-                    <span class="text-[10px] text-slate-400 tracking-wider"></span>
+                    <span class="text-xl font-bold text-white">SIS</span>
+                    <span class="text-[10px] text-zinc-500 tracking-wider">INTELLIGENT SYSTEMS</span>
                 </div>
             </div>
             <div class="hidden md:flex space-x-reverse space-x-8">
-                <a href="#services" class="hover:text-cyan-400 transition font-medium">خدماتنا</a>
-                <a href="#stats" class="hover:text-cyan-400 transition font-medium">إحصائيات</a>
-                <a href="#contact" class="hover:text-cyan-400 transition font-medium">تواصل معنا</a>
+                <a href="#services" class="text-zinc-300 hover:text-n8n-orange transition font-medium">خدماتنا</a>
+                <a href="#stats" class="text-zinc-300 hover:text-n8n-orange transition font-medium">إحصائيات</a>
+                <a href="#contact" class="text-zinc-300 hover:text-n8n-orange transition font-medium">تواصل معنا</a>
             </div>
-            <a href="#contact" class="bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-2 rounded-xl text-sm font-bold transition glow-button">
+            <a href="#contact" class="bg-gradient-to-r from-n8n-orange to-n8n-red text-white px-6 py-2 rounded-lg text-sm font-bold transition glow-button">
                 ابدأ رحلتك
             </a>
         </div>
@@ -59,26 +116,32 @@
 
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center pt-20 hero-gradient overflow-hidden">
-        <!-- Background Decor -->
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px]"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px]"></div>
+        <!-- Grid Pattern Background -->
+        <div class="bg-grid-pattern h-screen w-full fixed top-0 left-0"></div>
+
+        <!-- Background Decor (Orange & Purple for n8n vibe) -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-n8n-orange/10 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-n8n-purple/10 rounded-full blur-[120px]"></div>
 
         <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-            <h1 class="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+            <div class="inline-block mb-4 px-4 py-1 rounded-full border border-n8n-orange/30 bg-n8n-orange/10 text-n8n-orange text-sm font-medium">
+                ✨ الجيل الجديد من الأتمتة
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-8 leading-tight text-white">
                 توقف عن العمل كآلة.. <br>
-                <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                <span class="bg-gradient-to-r from-n8n-orange via-n8n-red to-n8n-purple bg-clip-text text-transparent">
                     حرّر طموحك من قيود المهام اليدوية
                 </span>، <br>
-                وحوّل أعمالك إلى محرك رقمي يعمل بلا توقف
+                وحوّل أعمالك إلى محرك رقمي
             </h1>
-            <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
-                نحن هنا لنعيد صياغة طريقة عملك. نستخدم أحدث تقنيات الأتمتة والذكاء الاصطناعي لنحول الفوضى إلى نظام، والجهد اليدوي إلى تدفقات عمل ذكية.
+            <p class="text-lg md:text-xl text-zinc-400 mb-10 max-w-2xl mx-auto">
+                نحن هنا لنعيد صياغة طريقة عملك. نربط تطبيقاتك ببعضها البعض ونستخدم الذكاء الاصطناعي لنحول الفوضى إلى نظام متناغم.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#contact" class="bg-cyan-600 hover:bg-cyan-500 text-white px-8 py-4 rounded-xl text-lg font-bold transition glow-button">
+                <a href="#contact" class="bg-n8n-orange hover:bg-n8n-red text-white px-8 py-4 rounded-xl text-lg font-bold transition glow-button">
                     احصل على استشارة مجانية
                 </a>
-                <a href="#services" class="border border-slate-700 hover:bg-slate-800 text-white px-8 py-4 rounded-xl text-lg font-bold transition">
+                <a href="#services" class="border border-zinc-700 hover:bg-white/5 text-white px-8 py-4 rounded-xl text-lg font-bold transition">
                     استكشف خدماتنا
                 </a>
             </div>
@@ -86,117 +149,119 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-24 bg-slate-900">
+    <section id="services" class="py-24 relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">كيف نغير قواعد اللعبة؟</h2>
-                <p class="text-slate-400">حلولنا مصممة لنمو أعمالك دون زيادة في الأعباء اليدوية</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">كيف نغير قواعد اللعبة؟</h2>
+                <p class="text-zinc-400">حلولنا مصممة لنمو أعمالك دون زيادة في الأعباء اليدوية</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="glass-card p-8 rounded-2xl hover:border-cyan-500/50 transition group">
-                    <div class="w-14 h-14 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-6 text-cyan-400 group-hover:bg-cyan-500 group-hover:text-white transition">
+                <!-- Service 1: Orange/Red (RPA) -->
+                <div class="glass-card p-8 rounded-2xl hover:border-n8n-orange/50 transition group">
+                    <div class="w-14 h-14 bg-n8n-orange/10 rounded-xl flex items-center justify-center mb-6 text-n8n-orange group-hover:bg-n8n-orange group-hover:text-white transition">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">أتمتة العمليات (RPA)</h3>
-                    <p class="text-slate-400 leading-relaxed">نقوم ببرمجة الأنظمة لتؤدي المهام المتكررة بدقة متناهية وسرعة لا تقارن بالبشر.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white">أتمتة العمليات (Workflow)</h3>
+                    <p class="text-zinc-400 leading-relaxed">بناء تدفقات عمل معقدة تربط جميع تطبيقاتك ببعضها البعض لتعمل بتناغم تام دون تدخل بشري.</p>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="glass-card p-8 rounded-2xl hover:border-blue-500/50 transition group">
-                    <div class="w-14 h-14 bg-blue-500/20 rounded-lg flex items-center justify-center mb-6 text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition">
+                <!-- Service 2: Purple (AI) -->
+                <div class="glass-card p-8 rounded-2xl hover:border-n8n-purple/50 transition group">
+                    <div class="w-14 h-14 bg-n8n-purple/10 rounded-xl flex items-center justify-center mb-6 text-n8n-purple group-hover:bg-n8n-purple group-hover:text-white transition">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">حلول الذكاء الاصطناعي</h3>
-                    <p class="text-slate-400 leading-relaxed">تكامل الذكاء الاصطناعي في خدمة عملائك وعملياتك لاتخاذ قرارات أذكى وأسرع.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white">وكلاء الذكاء الاصطناعي</h3>
+                    <p class="text-zinc-400 leading-relaxed">دمج نماذج LLMs المتقدمة في عملياتك لاتخاذ قرارات ذكية وتحليل المحتوى بشكل آلي.</p>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="glass-card p-8 rounded-2xl hover:border-emerald-500/50 transition group">
-                    <div class="w-14 h-14 bg-emerald-500/20 rounded-lg flex items-center justify-center mb-6 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition">
+                <!-- Service 3: Pink/Red (Data) -->
+                <div class="glass-card p-8 rounded-2xl hover:border-n8n-red/50 transition group">
+                    <div class="w-14 h-14 bg-n8n-red/10 rounded-xl flex items-center justify-center mb-6 text-n8n-red group-hover:bg-n8n-red group-hover:text-white transition">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">هيكلة البيانات</h3>
-                    <p class="text-slate-400 leading-relaxed">تحويل بياناتك الخام إلى تقارير تفاعلية تمنحك رؤية واضحة لمستقبل عملك.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white">هيكلة البيانات (Data)</h3>
+                    <p class="text-zinc-400 leading-relaxed">تحويل بياناتك الخام والمتناثرة إلى هياكل منظمة جاهزة للتحليل واتخاذ القرار.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section id="stats" class="py-20 border-y border-slate-800 bg-slate-950">
+    <section id="stats" class="py-20 border-y border-white/5 bg-[#0f1016] relative z-10">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-                <div class="text-4xl font-bold text-cyan-500 mb-2">90%</div>
-                <div class="text-slate-400 text-sm">تقليل في الخطأ البشري</div>
+                <div class="text-4xl font-bold text-n8n-orange mb-2">90%</div>
+                <div class="text-zinc-500 text-sm">تقليل في الخطأ البشري</div>
             </div>
             <div>
-                <div class="text-4xl font-bold text-blue-500 mb-2">+100</div>
-                <div class="text-slate-400 text-sm">مشروع مؤتمت بنجاح</div>
+                <div class="text-4xl font-bold text-n8n-purple mb-2">+100</div>
+                <div class="text-zinc-500 text-sm">سيناريو مؤتمت بنجاح</div>
             </div>
             <div>
-                <div class="text-4xl font-bold text-emerald-500 mb-2">24/7</div>
-                <div class="text-slate-400 text-sm">عمل بلا توقف</div>
+                <div class="text-4xl font-bold text-white mb-2">24/7</div>
+                <div class="text-zinc-500 text-sm">عمل بلا توقف</div>
             </div>
             <div>
-                <div class="text-4xl font-bold text-cyan-400 mb-2">50%</div>
-                <div class="text-slate-400 text-sm">توفير في التكاليف التشغيلية</div>
+                <div class="text-4xl font-bold text-n8n-red mb-2">50%</div>
+                <div class="text-zinc-500 text-sm">توفير في التكاليف</div>
             </div>
         </div>
     </section>
 
     <!-- Contact Form Section -->
-    <section id="contact" class="py-24 bg-slate-900">
-        <div class="max-w-3xl mx-auto px-6 bg-slate-950 p-10 rounded-3xl border border-slate-800 shadow-2xl">
+    <section id="contact" class="py-24 relative z-10">
+        <div class="max-w-3xl mx-auto px-6 bg-[#181920] p-10 rounded-3xl border border-white/10 shadow-2xl">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">هل أنت جاهز للتحول؟</h2>
-                <p class="text-slate-400">أخبرنا عن عملك، وسنقترح عليك أفضل استراتيجية للأتمتة</p>
+                <h2 class="text-3xl font-bold mb-4 text-white">هل أنت جاهز للتحول؟</h2>
+                <p class="text-zinc-400">أخبرنا عن التحديات التي تواجهها، وسنبني لك الحل الأمثل.</p>
             </div>
             <form id="contactForm" class="space-y-6">
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-sm font-medium mb-2">الاسم بالكامل</label>
-                        <input type="text" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 transition" required>
+                        <label class="block text-sm font-medium mb-2 text-zinc-300">الاسم بالكامل</label>
+                        <input type="text" class="w-full input-dark border text-white rounded-xl px-4 py-3 focus:outline-none focus:border-n8n-orange transition" required placeholder="الاسم الكريم">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium mb-2">البريد الإلكتروني</label>
-                        <input type="email" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 transition" required>
+                        <label class="block text-sm font-medium mb-2 text-zinc-300">البريد الإلكتروني</label>
+                        <input type="email" class="w-full input-dark border text-white rounded-xl px-4 py-3 focus:outline-none focus:border-n8n-orange transition" required placeholder="name@company.com">
                     </div>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium mb-2">مجال العمل</label>
-                    <input type="text" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 transition">
+                    <label class="block text-sm font-medium mb-2 text-zinc-300">مجال العمل</label>
+                    <input type="text" class="w-full input-dark border text-white rounded-xl px-4 py-3 focus:outline-none focus:border-n8n-orange transition" placeholder="مثال: تجارة إلكترونية، عقارات...">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium mb-2">كيف يمكننا مساعدتك؟</label>
-                    <textarea rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 transition"></textarea>
+                    <label class="block text-sm font-medium mb-2 text-zinc-300">كيف يمكننا مساعدتك؟</label>
+                    <textarea rows="4" class="w-full input-dark border text-white rounded-xl px-4 py-3 focus:outline-none focus:border-n8n-orange transition" placeholder="اوصف العملية التي تود أتمتتها..."></textarea>
                 </div>
-                <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-4 rounded-xl transition glow-button">
+                <button type="submit" class="w-full bg-gradient-to-r from-n8n-orange to-n8n-red hover:from-n8n-red hover:to-n8n-orange text-white font-bold py-4 rounded-xl transition glow-button">
                     إرسال الطلب الآن
                 </button>
             </form>
-            <div id="messageBox" class="hidden mt-6 p-4 rounded-xl text-center bg-emerald-500/20 text-emerald-400 border border-emerald-500/50">
+            <div id="messageBox" class="hidden mt-6 p-4 rounded-xl text-center bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                 شكراً لتواصلك! سنقوم بالرد عليك خلال أقل من 24 ساعة.
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-slate-800 text-center">
+    <footer class="py-12 border-t border-white/5 text-center relative z-10 bg-[#0f1016]">
         <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
-            <img src="logo.png">
-            <div class="text-xl font-bold mb-1 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            <div class="w-12 h-12 mb-4 bg-gradient-to-br from-n8n-orange to-n8n-red rounded-lg flex items-center justify-center font-bold text-white shadow-lg">
+                SIS
+            </div>
+            <div class="text-xl font-bold mb-2 text-white">
                SIS - Saidi Intelligent Systems
             </div>
-            <p class="text-slate-500 text-xs tracking-widest uppercase mb-4">Future of Automation</p>
-            <p class="text-slate-600 text-sm">© 2026 جميع الحقوق محفوظة. نصنع المستقبل بالأتمتة.</p>
+            <p class="text-zinc-500 text-xs tracking-widest uppercase mb-6">Future of Automation</p>
+            <p class="text-zinc-600 text-sm">© 2026 جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
