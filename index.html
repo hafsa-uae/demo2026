@@ -60,6 +60,7 @@
         .glow-button {
             transition: all 0.3s ease;
             box-shadow: 0 0 15px rgba(255, 109, 90, 0.3);
+            cursor: pointer;
         }
         
         .glow-button:hover {
@@ -86,18 +87,18 @@
             display: none !important;
         }
     </style>
-<style>
-  /* This targets the specific branding link in the Arabic interface */
-  [class*="woot-widget-bubble--brand"], 
-  .woot-widget-bubble--brand,
-  a[href*="chatwoot.com"] {
-    display: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
-</style>
+    <style>
+      /* This targets the specific branding link in the Arabic interface */
+      [class*="woot-widget-bubble--brand"], 
+      .woot-widget-bubble--brand,
+      a[href*="chatwoot.com"] {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+    </style>
     
 </head>
 <body class="relative">
@@ -108,7 +109,7 @@
             <div class="flex items-center gap-3">
                 <img src="logo.png" alt="SIS Logo" class="h-10 w-10 object-contain logo-shadow" onerror="this.src='https://via.placeholder.com/40x40/FF6D5A/FFFFFF?text=SIS'">
                 <div class="flex flex-col leading-tight hidden sm:block">
-                  <span class="text-[16px] font-bold text-white tracking-tight">SIS - Saidi Intelligent Systems</span>      
+                  <span class="text-[16px] font-bold text-white tracking-tight">SIS - Saidi Intelligent Systems</span>       
                 </div>
             </div>
             
@@ -120,7 +121,8 @@
                 <a href="#contact" class="text-zinc-300 hover:text-n8n-orange transition font-medium">تواصل معنا</a>
             </div>
 
-            <a href="#contact" class="bg-gradient-to-r from-n8n-orange to-n8n-red text-white px-6 py-2 rounded-lg text-sm font-bold transition glow-button">
+            <!-- Modified Button: Triggers Typebot -->
+            <a href="javascript:void(0)" onclick="Typebot.open()" class="bg-gradient-to-r from-n8n-orange to-n8n-red text-white px-6 py-2 rounded-lg text-sm font-bold transition glow-button">
                 ابدأ رحلتك
             </a>
         </div>
@@ -148,7 +150,8 @@
                 نحن هنا لنعيد صياغة طريقة عملك. نربط تطبيقاتك ببعضها البعض ونستخدم الذكاء الاصطناعي لنحول الفوضى إلى نظام متناغم يعمل بدقة متناهية.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#contact" class="bg-n8n-orange hover:bg-n8n-red text-white px-8 py-4 rounded-xl text-lg font-bold transition glow-button">
+                <!-- Modified Button: Triggers Typebot -->
+                <a href="javascript:void(0)" onclick="Typebot.open()" class="bg-n8n-orange hover:bg-n8n-red text-white px-8 py-4 rounded-xl text-lg font-bold transition glow-button">
                     احصل على استشارة مجانية
                 </a>
                 <a href="#services" class="border border-zinc-700 hover:bg-white/5 text-white px-8 py-4 rounded-xl text-lg font-bold transition">
@@ -381,6 +384,19 @@
           })
         }
       })(document,"script");
+    </script>
+    
+    <!-- Typebot Initialization -->
+    <script type="module">
+        import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js'
+      
+        Typebot.initPopup({
+          apiHost: "https://typebot-viewer.panel.saidiautomation.com",
+          typebot: "lead-magnet-9lv82d7",
+        });
+
+        // Make Typebot accessible globally so the button onclick works
+        window.Typebot = Typebot;
     </script>
 
     <!-- UI Interaction Scripts -->
