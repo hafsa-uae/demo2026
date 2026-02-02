@@ -135,17 +135,8 @@
             100% { transform: translateX(100%); } 
         }
 
-        .tech-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            mix-blend-mode: screen;
-            z-index: 1;
-        }
-
-        /* Image Mask for professional look */
-        .image-mask {
-            mask-image: linear-gradient(to left, black 80%, transparent 100%);
+        .image-glow {
+            box-shadow: 0 0 60px -15px rgba(255, 109, 90, 0.3);
         }
     </style>
 </head>
@@ -155,7 +146,6 @@
     <nav class="fixed w-full z-50 bg-[#0f1016]/80 backdrop-blur-md border-b border-white/5 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-4">
-                <!-- Requested Logo -->
                 <a href="#" class="flex items-center gap-3">
                     <img src="https://raw.githubusercontent.com/hafsa-uae/demo2026/main/logo.png" alt="SIS Logo" class="logo-img">
                     <div class="flex flex-col leading-tight hidden sm:block">
@@ -228,48 +218,20 @@
                     </div>
                 </div>
 
-                <!-- Professional Hero Image: AI Agent Concept -->
+                <!-- NEW HERO IMAGE: AI Agentic Workflows -->
                 <div class="order-1 lg:order-2 relative group animate-float">
-                    <div class="relative z-10 rounded-3xl border border-white/10 overflow-hidden shadow-2xl bg-[#13141b] aspect-square lg:aspect-auto lg:h-[600px]">
-                        <!-- New Professional Image: Cybernetic Intelligence / AI Core -->
-                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000&auto=format&fit=crop" 
-                             alt="AI Agent Intelligence" 
-                             class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-[2s]">
+                    <div class="relative z-10 rounded-[2rem] border border-white/10 overflow-hidden shadow-2xl bg-[#0f1016] image-glow">
+                        <img src="https://www.intuz.com/_next/image?url=https%3A%2F%2Fintuz-site-uat.b-cdn.net%2F1764341584766_ZrYQ5kaF0TcGI0pP_AIAgent_AIAgenticWorkflowsAcrossIndustries-1.png&w=2048&q=75" 
+                             alt="AI Agentic Workflows Across Industries" 
+                             class="w-full h-full object-contain group-hover:scale-[1.02] transition duration-700">
                         
-                        <!-- HUD Overlay Effects -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f1016] via-transparent to-transparent"></div>
-                        
-                        <!-- Floating Data Cards -->
-                        <div class="absolute top-10 right-10 bg-black/40 backdrop-blur-xl p-4 rounded-2xl border border-white/10 animate-pulse">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-full bg-n8n-orange/20 flex items-center justify-center">
-                                    <i class="fa-solid fa-chart-line text-n8n-orange text-sm"></i>
-                                </div>
-                                <div>
-                                    <p class="text-[10px] text-zinc-500 uppercase">Efficiency Boost</p>
-                                    <p class="text-sm font-bold text-white">+340%</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="absolute bottom-20 left-10 bg-white/5 backdrop-blur-2xl p-5 rounded-2xl border border-white/10 max-w-[200px]">
-                            <div class="flex gap-2 mb-3">
-                                <div class="w-2 h-2 rounded-full bg-red-500"></div>
-                                <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
-                                <div class="w-2 h-2 rounded-full bg-green-500"></div>
-                            </div>
-                            <p class="text-xs font-mono text-n8n-orange mb-1">> Agent_Status: Active</p>
-                            <p class="text-xs font-mono text-zinc-400 mb-1">> Learning_Model: V4.2</p>
-                            <p class="text-xs font-mono text-zinc-400">> Syncing_Data...</p>
-                        </div>
-
-                        <!-- Central Glow -->
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-n8n-orange/20 blur-[100px] rounded-full pointer-events-none"></div>
+                        <!-- Overlay to blend with dark UI -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f1016]/40 via-transparent to-transparent pointer-events-none"></div>
                     </div>
 
-                    <!-- Decorative Background Orbs -->
-                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-n8n-purple/30 rounded-full blur-[80px] -z-10 animate-pulse"></div>
-                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-n8n-red/30 rounded-full blur-[80px] -z-10 animate-pulse" style="animation-delay: 2s"></div>
+                    <!-- Decorative Background Elements -->
+                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-n8n-purple/20 rounded-full blur-[80px] -z-10 animate-pulse"></div>
+                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-n8n-orange/20 rounded-full blur-[80px] -z-10 animate-pulse" style="animation-delay: 2s"></div>
                 </div>
             </div>
         </div>
@@ -315,20 +277,6 @@
     </footer>
 
     <script>
-        // Simple scroll reveal
-        const reveal = () => {
-            const reveals = document.querySelectorAll(".reveal-on-scroll");
-            reveals.forEach(r => {
-                const windowHeight = window.innerHeight;
-                const elementTop = r.getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) {
-                    r.classList.add("visible");
-                }
-            });
-        };
-        window.addEventListener("scroll", reveal);
-        window.onload = reveal;
-
         // Navbar scroll effect
         window.addEventListener("scroll", () => {
             const nav = document.getElementById('navbar');
