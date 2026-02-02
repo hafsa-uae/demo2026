@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>وكالة الأتمتة الرقمية | SIS - Saidi Intelligent Systems</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts: Tajawal -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Added Font Awesome for icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
@@ -23,23 +29,38 @@
                             dark: '#0f1016',
                             card: '#181920'
                         }
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
                     }
                 }
             }
         }
     </script>
+
     <style>
         body {
             font-family: 'Tajawal', sans-serif;
             scroll-behavior: smooth;
             background-color: #0f1016;
             color: #e2e8f0;
+            overflow-x: hidden;
         }
 
         /* n8n Style Grid Background */
         .bg-grid-pattern {
             background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px),
-                              linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);
+                            linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);
             background-size: 50px 50px;
             mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
             -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
@@ -54,19 +75,28 @@
             background: radial-gradient(circle at center, #1c1d29 0%, #0f1016 100%);
         }
 
+        /* Enhanced Glass Card */
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 109, 90, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
         }
 
         .glow-button {
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(255, 109, 90, 0.3);
+            box-shadow: 0 0 15px rgba(255, 109, 90, 0.2);
         }
         
         .glow-button:hover {
-            box-shadow: 0 0 25px rgba(255, 109, 90, 0.6);
+            box-shadow: 0 0 25px rgba(255, 109, 90, 0.5);
             transform: translateY(-2px);
         }
 
@@ -83,6 +113,35 @@
         ::-webkit-scrollbar-track { background: #0f1016; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #FF6D5A; }
+
+        /* Animation Classes */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Marquee Animation */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+        
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(50%); } /* Positive because RTL */
+        }
 
         /* Floating Bar Styles - Right Side */
         .floating-bar {
@@ -141,7 +200,7 @@
         .telegram { background-color: #0088cc; }
         .chatwoot { background-color: #FF6D5A; }
 
-        /* Hide Chatwoot Branding & Original Bubble */
+        /* Hide Chatwoot Branding */
         .woot-widget-bubble, 
         .woot--bubble-holder,
         #chatwoot-widget-container .woot-widget-bubble,
@@ -157,58 +216,126 @@
 <body class="relative">
 
     <!-- Header -->
-    <nav class="fixed w-full z-50 bg-[#0f1016]/80 backdrop-blur-md border-b border-white/5">
+    <nav class="fixed w-full z-50 bg-[#0f1016]/80 backdrop-blur-md border-b border-white/5 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <img src="logo.png" alt="SIS Logo" class="h-10 w-10 object-contain logo-shadow" onerror="this.src='https://via.placeholder.com/40x40/FF6D5A/FFFFFF?text=SIS'">
+                <div class="h-10 w-10 bg-gradient-to-br from-n8n-orange to-n8n-red rounded-lg flex items-center justify-center text-white shadow-lg logo-shadow">
+                    <i class="fa-solid fa-network-wired"></i>
+                </div>
                 <div class="flex flex-col leading-tight hidden sm:block">
                     <span class="text-[16px] font-bold text-white tracking-tight">SIS - Saidi Intelligent Systems</span>
                 </div>
             </div>
             
             <div class="hidden md:flex space-x-reverse space-x-8">
-                <a href="#" class="text-zinc-300 hover:text-n8n-orange transition font-medium">الرئيسية</a>
-                <a href="#services" class="text-zinc-300 hover:text-n8n-orange transition font-medium">خدماتنا</a>
-                <a href="#pricing" class="text-zinc-300 hover:text-n8n-orange transition font-medium">الأسعار</a>
-                <a href="#stats" class="text-zinc-300 hover:text-n8n-orange transition font-medium">إحصائيات</a>
-                <a href="#contact" class="text-zinc-300 hover:text-n8n-orange transition font-medium">تواصل معنا</a>
+                <a href="#" class="text-zinc-300 hover:text-n8n-orange transition font-medium text-sm">الرئيسية</a>
+                <a href="#services" class="text-zinc-300 hover:text-n8n-orange transition font-medium text-sm">خدماتنا</a>
+                <a href="#pricing" class="text-zinc-300 hover:text-n8n-orange transition font-medium text-sm">الأسعار</a>
+                <a href="#stats" class="text-zinc-300 hover:text-n8n-orange transition font-medium text-sm">إحصائيات</a>
+                <a href="#contact" class="text-zinc-300 hover:text-n8n-orange transition font-medium text-sm">تواصل معنا</a>
             </div>
 
-            <button onclick="openTypebot()" class="bg-gradient-to-r from-n8n-orange to-n8n-red text-white px-6 py-2 rounded-lg text-sm font-bold transition glow-button">
+            <button onclick="openTypebot()" class="bg-gradient-to-r from-n8n-orange to-n8n-red text-white px-6 py-2 rounded-lg text-sm font-bold transition glow-button hover:scale-105">
                 ابدأ رحلتك
             </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 hero-gradient overflow-hidden">
+    <section class="relative min-h-screen flex items-center pt-20 hero-gradient overflow-hidden">
         <div class="bg-grid-pattern h-screen w-full fixed top-0 left-0"></div>
 
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-n8n-orange/10 rounded-full blur-[120px]"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-n8n-purple/10 rounded-full blur-[120px]"></div>
+        <!-- Ambient Light Orbs -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-n8n-orange/20 rounded-full blur-[120px] animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-n8n-purple/20 rounded-full blur-[120px] animate-pulse-slow" style="animation-delay: 1s;"></div>
 
-        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-            <div class="inline-block mb-6 px-4 py-1 rounded-full border border-n8n-orange/30 bg-n8n-orange/10 text-n8n-orange text-sm font-medium">
-                ✨الجيل الجديد من الأتمتة والذكاء الاصطناعي
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-center lg:text-right order-2 lg:order-1 reveal-on-scroll">
+                    <div class="inline-block mb-6 px-4 py-1.5 rounded-full border border-n8n-orange/30 bg-n8n-orange/10 text-n8n-orange text-sm font-bold backdrop-blur-sm">
+                        <i class="fa-solid fa-sparkles ml-2"></i> الجيل الجديد من الأتمتة والذكاء الاصطناعي
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-extrabold mb-6 leading-tight text-white">
+                        توقف عن العمل كآلة.. <br>
+                        <span class="bg-gradient-to-r from-n8n-orange via-n8n-red to-n8n-purple bg-clip-text text-transparent">
+                            أطلق العنان لطموحك
+                        </span>
+                    </h1>
+                    <p class="text-lg text-zinc-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        نحول الفوضى اليدوية إلى سيمفونية رقمية. نربط تطبيقاتك بذكاء، ونبني وكلاء AI يعملون لأجلك 24/7، لتتفرغ أنت للنمو والإبداع.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                        <button onclick="openTypebot()" class="bg-n8n-orange hover:bg-n8n-red text-white px-8 py-4 rounded-xl text-lg font-bold transition glow-button flex items-center justify-center gap-2 group">
+                            <span>احصل على استشارة مجانية</span>
+                            <i class="fa-solid fa-arrow-left group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                        <a href="#services" class="border border-zinc-700 hover:bg-white/5 text-white px-8 py-4 rounded-xl text-lg font-bold transition flex items-center justify-center">
+                            استكشف خدماتنا
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Image / Visual -->
+                <div class="order-1 lg:order-2 relative reveal-on-scroll animate-float" style="transition-delay: 200ms;">
+                    <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black/50 backdrop-blur-sm group">
+                        <!-- Abstract Dashboard Representation -->
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" 
+                             alt="Automation Dashboard" 
+                             class="w-full h-auto object-cover opacity-80 group-hover:scale-105 transition duration-700"
+                             style="max-height: 500px;">
+                        
+                        <!-- Floating Cards Overlay -->
+                        <div class="absolute -bottom-6 -right-6 bg-[#181920] p-4 rounded-xl border border-white/10 shadow-xl flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
+                            <div class="bg-green-500/20 p-2 rounded-lg text-green-500">
+                                <i class="fa-solid fa-check-circle text-2xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-zinc-400">الحالة</div>
+                                <div class="font-bold text-white">تمت الأتمتة بنجاح</div>
+                            </div>
+                        </div>
+
+                         <div class="absolute top-10 -left-6 bg-[#181920] p-4 rounded-xl border border-white/10 shadow-xl flex items-center gap-3 hidden md:flex animate-pulse-slow">
+                            <div class="bg-n8n-purple/20 p-2 rounded-lg text-n8n-purple">
+                                <i class="fa-solid fa-robot text-2xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-zinc-400">AI Agent</div>
+                                <div class="font-bold text-white">يحلل البيانات...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-8 leading-tight text-white">
-                توقف عن العمل كآلة.. <br>
-                <span class="bg-gradient-to-r from-n8n-orange via-n8n-red to-n8n-purple bg-clip-text text-transparent">
-                    حرّر طموحك من قيود المهام اليدوية
-                </span>، <br>
-                وحوّل أعمالك إلى محرك رقمي
-            </h1>
-            <p class="text-lg md:text-xl text-zinc-400 mb-10 max-w-2xl mx-auto">
-                نحن هنا لنعيد صياغة طريقة عملك. نربط تطبيقاتك ببعضها البعض ونستخدم الذكاء الاصطناعي لنحول الفوضى إلى نظام متناغم يعمل بدقة متناهية.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <!-- Triggering Typebot via the button mentioned -->
-                <button onclick="openTypebot()" class="bg-n8n-orange hover:bg-n8n-red text-white px-8 py-4 rounded-xl text-lg font-bold transition glow-button">
-                    احصل على استشارة مجانية
-                </button>
-                <a href="#services" class="border border-zinc-700 hover:bg-white/5 text-white px-8 py-4 rounded-xl text-lg font-bold transition">
-                    استكشف خدماتنا
-                </a>
+        </div>
+    </section>
+
+    <!-- Integrations Marquee -->
+    <section class="py-10 border-y border-white/5 bg-black/20 overflow-hidden relative z-20">
+        <div class="max-w-7xl mx-auto px-6 mb-6 text-center">
+            <p class="text-zinc-500 text-sm font-medium uppercase tracking-widest">نربط أدواتك المفضلة بسلاسة</p>
+        </div>
+        <div class="marquee-container opacity-60 hover:opacity-100 transition-opacity duration-500">
+            <div class="marquee-content text-2xl text-zinc-400 font-bold flex gap-16 px-4">
+                <!-- Logos (Using Text/Icons for reliability) -->
+                <span class="flex items-center gap-2"><i class="fab fa-google text-white"></i> Google Workspace</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-n8n-orange"></i> n8n</span>
+                <span class="flex items-center gap-2"><i class="fab fa-slack text-white"></i> Slack</span>
+                <span class="flex items-center gap-2"><i class="fas fa-brain text-n8n-purple"></i> OpenAI</span>
+                <span class="flex items-center gap-2"><i class="fab fa-hubspot text-n8n-orange"></i> HubSpot</span>
+                <span class="flex items-center gap-2"><i class="fab fa-shopify text-green-500"></i> Shopify</span>
+                <span class="flex items-center gap-2"><i class="fab fa-telegram text-blue-400"></i> Telegram</span>
+                <span class="flex items-center gap-2"><i class="fas fa-table text-green-600"></i> Airtable</span>
+                 <!-- Duplicate for smooth loop -->
+                <span class="flex items-center gap-2"><i class="fab fa-google text-white"></i> Google Workspace</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-n8n-orange"></i> n8n</span>
+                <span class="flex items-center gap-2"><i class="fab fa-slack text-white"></i> Slack</span>
+                <span class="flex items-center gap-2"><i class="fas fa-brain text-n8n-purple"></i> OpenAI</span>
+                <span class="flex items-center gap-2"><i class="fab fa-hubspot text-n8n-orange"></i> HubSpot</span>
+                <span class="flex items-center gap-2"><i class="fab fa-shopify text-green-500"></i> Shopify</span>
+                <span class="flex items-center gap-2"><i class="fab fa-telegram text-blue-400"></i> Telegram</span>
+                <span class="flex items-center gap-2"><i class="fas fa-table text-green-600"></i> Airtable</span>
             </div>
         </div>
     </section>
@@ -216,40 +343,37 @@
     <!-- Services Section -->
     <section id="services" class="py-24 relative z-10">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 reveal-on-scroll">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">كيف نغير قواعد اللعبة؟</h2>
                 <p class="text-zinc-400">حلولنا مصممة لنمو أعمالك دون زيادة في الأعباء اليدوية</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl hover:border-n8n-orange/50 transition group">
-                    <div class="w-14 h-14 bg-n8n-orange/10 rounded-xl flex items-center justify-center mb-6 text-n8n-orange group-hover:bg-n8n-orange group-hover:text-white transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
+                <!-- Service 1 -->
+                <div class="glass-card p-8 rounded-2xl group reveal-on-scroll">
+                    <div class="w-16 h-16 bg-n8n-orange/10 rounded-2xl flex items-center justify-center mb-6 text-n8n-orange group-hover:bg-n8n-orange group-hover:text-white transition duration-300 shadow-lg shadow-n8n-orange/5">
+                        <i class="fa-solid fa-project-diagram text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-4 text-white">أتمتة العمليات (Workflow)</h3>
-                    <p class="text-zinc-400 leading-relaxed">بناء تدفقات عمل معقدة تربط جميع تطبيقاتك ببعضها البعض لتعمل بتناغم تام دون تدخل بشري.</p>
+                    <p class="text-zinc-400 leading-relaxed text-sm">تصميم وتشغيل مسارات عمل تربط تطبيقاتك المختلفة. قل وداعاً لعمليات النسخ واللصق اليدوية، ودع البيانات تتدفق بحرية.</p>
                 </div>
 
-                <div class="glass-card p-8 rounded-2xl hover:border-n8n-purple/50 transition group">
-                    <div class="w-14 h-14 bg-n8n-purple/10 rounded-xl flex items-center justify-center mb-6 text-n8n-purple group-hover:bg-n8n-purple group-hover:text-white transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                        </svg>
+                <!-- Service 2 -->
+                <div class="glass-card p-8 rounded-2xl group reveal-on-scroll" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-n8n-purple/10 rounded-2xl flex items-center justify-center mb-6 text-n8n-purple group-hover:bg-n8n-purple group-hover:text-white transition duration-300 shadow-lg shadow-n8n-purple/5">
+                        <i class="fa-solid fa-microchip text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-4 text-white">وكلاء الذكاء الاصطناعي</h3>
-                    <p class="text-zinc-400 leading-relaxed">دمج نماذج LLMs المتقدمة في عملياتك لاتخاذ قرارات ذكية وتحليل المحتوى بشكل آلي ولحظي.</p>
+                    <p class="text-zinc-400 leading-relaxed text-sm">دمج نماذج LLMs (مثل GPT-4) لاتخاذ قرارات ذكية، الرد على العملاء، وتحليل المحتوى بشكل فوري ودقيق.</p>
                 </div>
 
-                <div class="glass-card p-8 rounded-2xl hover:border-n8n-red/50 transition group">
-                    <div class="w-14 h-14 bg-n8n-red/10 rounded-xl flex items-center justify-center mb-6 text-n8n-red group-hover:bg-n8n-red group-hover:text-white transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
-                        </svg>
+                <!-- Service 3 -->
+                <div class="glass-card p-8 rounded-2xl group reveal-on-scroll" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-n8n-red/10 rounded-2xl flex items-center justify-center mb-6 text-n8n-red group-hover:bg-n8n-red group-hover:text-white transition duration-300 shadow-lg shadow-n8n-red/5">
+                        <i class="fa-solid fa-database text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">هيكلة البيانات الذكية</h3>
-                    <p class="text-zinc-400 leading-relaxed">تحويل بياناتك الخام والمتناثرة إلى هياكل منظمة جاهزة للتحليل واتخاذ القرار بدقة 100%.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white">هيكلة البيانات CRM</h3>
+                    <p class="text-zinc-400 leading-relaxed text-sm">تنظيم بيانات العملاء والمبيعات بشكل آلي في أنظمة CRM، مما يمنحك رؤية واضحة ودقيقة لاتخاذ القرارات الاستراتيجية.</p>
                 </div>
             </div>
         </div>
@@ -257,29 +381,32 @@
 
     <!-- Pricing Section -->
     <section id="pricing" class="py-24 relative z-10 bg-white/5">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">خطط استثمار مرنة</h2>
-                <p class="text-zinc-400">اختر الخطة التي تناسب حجم طموحك وعملك</p>
+        <!-- Abstract Background Shape -->
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-n8n-orange/5 to-transparent pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">استثمار ذكي لمستقبل عملك</h2>
+                <p class="text-zinc-400">اختر الباقة التي تناسب مرحلة نمو شركتك</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-3 gap-8 items-start">
                 <!-- Basic Plan -->
-                <div class="glass-card p-8 rounded-3xl border-white/5 flex flex-col">
+                <div class="glass-card p-8 rounded-3xl border-white/5 flex flex-col reveal-on-scroll">
                     <h3 class="text-xl font-bold text-white mb-2">البداية الذكية</h3>
-                    <p class="text-zinc-500 text-sm mb-6">للمشاريع الصغيرة والناشئة</p>
+                    <p class="text-zinc-500 text-sm mb-6">للمشاريع الناشئة</p>
                     <div class="text-4xl font-bold text-white mb-6">$499 <span class="text-sm font-normal text-zinc-500">/مشروع</span></div>
                     <ul class="space-y-4 mb-8 flex-grow">
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            أتمتة حتى 3 عمليات أساسية
+                        <li class="flex items-center gap-3 text-zinc-300 text-sm">
+                            <i class="fa-solid fa-check-circle text-n8n-orange"></i>
+                            أتمتة 3 عمليات أساسية
                         </li>
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            ربط حتى 5 تطبيقات مختلفة
+                        <li class="flex items-center gap-3 text-zinc-300 text-sm">
+                            <i class="fa-solid fa-check-circle text-n8n-orange"></i>
+                            ربط 5 تطبيقات
                         </li>
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                        <li class="flex items-center gap-3 text-zinc-300 text-sm">
+                            <i class="fa-solid fa-check-circle text-n8n-orange"></i>
                             دعم فني عبر البريد
                         </li>
                     </ul>
@@ -287,49 +414,49 @@
                 </div>
 
                 <!-- Pro Plan -->
-                <div class="glass-card p-8 rounded-3xl border-n8n-orange/50 relative overflow-hidden flex flex-col scale-105 z-20 bg-n8n-dark">
-                    <div class="absolute top-0 right-0 bg-n8n-orange text-white px-4 py-1 text-xs font-bold rounded-bl-xl">الأكثر طلباً</div>
+                <div class="glass-card p-8 rounded-3xl border-n8n-orange/50 relative overflow-hidden flex flex-col scale-105 z-20 bg-[#15161c] shadow-2xl shadow-n8n-orange/10 reveal-on-scroll" style="transition-delay: 100ms;">
+                    <div class="absolute top-0 right-0 bg-gradient-to-bl from-n8n-orange to-n8n-red text-white px-6 py-1.5 text-xs font-bold rounded-bl-2xl shadow-lg">الأكثر طلباً</div>
                     <h3 class="text-xl font-bold text-white mb-2">احتراف الأتمتة</h3>
                     <p class="text-zinc-500 text-sm mb-6">للوكالات والشركات المتوسطة</p>
                     <div class="text-4xl font-bold text-white mb-6">$1,299 <span class="text-sm font-normal text-zinc-500">/مشروع</span></div>
                     <ul class="space-y-4 mb-8 flex-grow">
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm font-bold italic">
-                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                        <li class="flex items-center gap-3 text-white text-sm font-bold">
+                            <div class="bg-n8n-orange/20 p-1 rounded-full"><i class="fa-solid fa-check text-n8n-orange text-xs"></i></div>
                             أتمتة عمليات غير محدودة
                         </li>
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            دمج وكلاء الذكاء الاصطناعي (AI)
+                        <li class="flex items-center gap-3 text-zinc-300 text-sm">
+                            <div class="bg-white/10 p-1 rounded-full"><i class="fa-solid fa-check text-white text-xs"></i></div>
+                            دمج وكلاء الذكاء الاصطناعي (AI Agents)
                         </li>
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            تدريب الفريق على النظام
+                        <li class="flex items-center gap-3 text-zinc-300 text-sm">
+                            <div class="bg-white/10 p-1 rounded-full"><i class="fa-solid fa-check text-white text-xs"></i></div>
+                            لوحة تحكم (Dashboard) مخصصة
                         </li>
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            أولوية في الدعم الفني
+                        <li class="flex items-center gap-3 text-zinc-300 text-sm">
+                            <div class="bg-white/10 p-1 rounded-full"><i class="fa-solid fa-check text-white text-xs"></i></div>
+                            جلسة تدريب للفريق
                         </li>
                     </ul>
-                    <button onclick="openTypebot()" class="w-full text-center py-4 rounded-xl bg-n8n-orange text-white hover:bg-n8n-red transition font-bold glow-button">اطلبها الآن</button>
+                    <button onclick="openTypebot()" class="w-full text-center py-4 rounded-xl bg-gradient-to-r from-n8n-orange to-n8n-red text-white hover:opacity-90 transition font-bold glow-button transform hover:scale-[1.02]">اطلبها الآن</button>
                 </div>
 
                 <!-- Custom Plan -->
-                <div class="glass-card p-8 rounded-3xl border-white/5 flex flex-col">
+                <div class="glass-card p-8 rounded-3xl border-white/5 flex flex-col reveal-on-scroll" style="transition-delay: 200ms;">
                     <h3 class="text-xl font-bold text-white mb-2">مخصص (Enterprise)</h3>
-                    <p class="text-zinc-500 text-sm mb-6">حلول شاملة للمنظمات الكبيرة</p>
+                    <p class="text-zinc-500 text-sm mb-6">للمنظمات الكبيرة</p>
                     <div class="text-4xl font-bold text-white mb-6">تواصل معنا</div>
                     <ul class="space-y-4 mb-8 flex-grow">
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-purple" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            بنية تحتية خاصة (On-premise)
+                        <li class="flex items-center gap-3 text-zinc-300 text-sm">
+                            <i class="fa-solid fa-server text-n8n-purple"></i>
+                            استضافة خاصة (Self-Hosted)
                         </li>
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-purple" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            أنظمة أمان متقدمة
+                        <li class="flex items-center gap-3 text-zinc-300 text-sm">
+                            <i class="fa-solid fa-shield-halved text-n8n-purple"></i>
+                            SLA وأنظمة أمان متقدمة
                         </li>
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-purple" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            إدارة كاملة للسيرفرات
+                        <li class="flex items-center gap-3 text-zinc-300 text-sm">
+                            <i class="fa-solid fa-headset text-n8n-purple"></i>
+                            مدير حساب خاص
                         </li>
                     </ul>
                     <button onclick="openTypebot()" class="w-full text-center py-3 rounded-xl border border-zinc-700 text-white hover:bg-white/5 transition font-bold">تواصل للمزيد</button>
@@ -339,59 +466,68 @@
     </section>
 
     <!-- Stats Section -->
-    <section id="stats" class="py-20 border-y border-white/5 bg-[#0f1016] relative z-10">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-                <div class="text-4xl font-bold text-n8n-orange mb-2">90%</div>
+    <section id="stats" class="py-20 border-y border-white/5 bg-[#0f1016] relative z-10 overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop')] opacity-5 bg-cover bg-center bg-fixed"></div>
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center relative z-10">
+            <div class="reveal-on-scroll">
+                <div class="text-4xl font-bold text-n8n-orange mb-2 counter" data-target="90">90%</div>
                 <div class="text-zinc-500 text-sm font-medium">تقليل في الخطأ البشري</div>
             </div>
-            <div>
-                <div class="text-4xl font-bold text-n8n-purple mb-2">+150</div>
+            <div class="reveal-on-scroll" style="transition-delay: 100ms;">
+                <div class="text-4xl font-bold text-n8n-purple mb-2 counter" data-target="150">+150</div>
                 <div class="text-zinc-500 text-sm font-medium">سيناريو مؤتمت بنجاح</div>
             </div>
-            <div>
+            <div class="reveal-on-scroll" style="transition-delay: 200ms;">
                 <div class="text-4xl font-bold text-white mb-2">24/7</div>
                 <div class="text-zinc-500 text-sm font-medium">عمل بلا توقف</div>
             </div>
-            <div>
-                <div class="text-4xl font-bold text-n8n-red mb-2">60%</div>
-                <div class="text-zinc-500 text-sm font-medium">توفير في الوقت</div>
+            <div class="reveal-on-scroll" style="transition-delay: 300ms;">
+                <div class="text-4xl font-bold text-n8n-red mb-2 counter" data-target="60">60%</div>
+                <div class="text-zinc-500 text-sm font-medium">توفير في الوقت والموارد</div>
             </div>
         </div>
     </section>
 
     <!-- Contact Form Section -->
     <section id="contact" class="py-24 relative z-10">
-        <div class="max-w-3xl mx-auto px-6 bg-[#181920] p-10 rounded-3xl border border-white/10 shadow-2xl">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4 text-white">هل أنت جاهز للتحول الرقمي؟</h2>
-                <p class="text-zinc-400">أخبرنا عن التحديات التي تواجهها، وسنقوم ببناء محرك الأتمتة الخاص بك.</p>
-            </div>
-            <form id="contactForm" class="space-y-6">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-medium mb-2 text-zinc-300">الاسم بالكامل</label>
-                        <input type="text" class="w-full input-dark border text-white rounded-xl px-4 py-3 focus:outline-none focus:border-n8n-orange transition" required placeholder="الاسم الكريم">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-[#181920]/80 backdrop-blur-xl p-10 md:p-14 rounded-3xl border border-white/10 shadow-2xl relative overflow-hidden reveal-on-scroll">
+                 <div class="absolute -top-20 -left-20 w-64 h-64 bg-n8n-orange/10 rounded-full blur-[80px]"></div>
+                 
+                <div class="text-center mb-12 relative z-10">
+                    <h2 class="text-3xl font-bold mb-4 text-white">ابدأ رحلة التحول الرقمي</h2>
+                    <p class="text-zinc-400">لا تترك منافسيك يسبقونك. املأ النموذج وسنرسل لك خطة مبدئية مجانية.</p>
+                </div>
+                
+                <form id="contactForm" class="space-y-6 relative z-10">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="group">
+                            <label class="block text-sm font-medium mb-2 text-zinc-300 group-focus-within:text-n8n-orange transition-colors">الاسم بالكامل</label>
+                            <input type="text" class="w-full input-dark border text-white rounded-xl px-4 py-3 focus:outline-none focus:border-n8n-orange transition" required placeholder="الاسم الكريم">
+                        </div>
+                        <div class="group">
+                            <label class="block text-sm font-medium mb-2 text-zinc-300 group-focus-within:text-n8n-orange transition-colors">البريد الإلكتروني</label>
+                            <input type="email" class="w-full input-dark border text-white rounded-xl px-4 py-3 focus:outline-none focus:border-n8n-orange transition" required placeholder="name@company.com">
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2 text-zinc-300">البريد الإلكتروني</label>
-                        <input type="email" class="w-full input-dark border text-white rounded-xl px-4 py-3 focus:outline-none focus:border-n8n-orange transition" required placeholder="name@company.com">
+                    <div class="group">
+                        <label class="block text-sm font-medium mb-2 text-zinc-300 group-focus-within:text-n8n-orange transition-colors">مجال العمل</label>
+                        <input type="text" class="w-full input-dark border text-white rounded-xl px-4 py-3 focus:outline-none focus:border-n8n-orange transition" placeholder="مثال: تجارة إلكترونية، عقارات، تسويق...">
                     </div>
+                    <div class="group">
+                        <label class="block text-sm font-medium mb-2 text-zinc-300 group-focus-within:text-n8n-orange transition-colors">ما التحدي الذي يواجهك؟</label>
+                        <textarea rows="4" class="w-full input-dark border text-white rounded-xl px-4 py-3 focus:outline-none focus:border-n8n-orange transition" placeholder="اوصف العملية اليدوية التي تستهلك وقتك..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-n8n-orange to-n8n-red hover:from-n8n-red hover:to-n8n-orange text-white font-bold py-4 rounded-xl transition-all duration-300 glow-button transform hover:-translate-y-1">
+                        🚀 إرسال الطلب مجاناً
+                    </button>
+                </form>
+                
+                <div id="messageBox" class="hidden mt-6 p-6 rounded-xl text-center bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <i class="fa-solid fa-check-circle text-3xl mb-2 block"></i>
+                    <span class="font-bold text-lg">شكراً لتواصلك!</span><br>
+                    سنقوم بدراسة طلبك والرد عليك بخطة عمل في غضون 24 ساعة.
                 </div>
-                <div>
-                    <label class="block text-sm font-medium mb-2 text-zinc-300">مجال العمل</label>
-                    <input type="text" class="w-full input-dark border text-white rounded-xl px-4 py-3 focus:outline-none focus:border-n8n-orange transition" placeholder="مثال: تجارة إلكترونية، وكالة تسويق...">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium mb-2 text-zinc-300">ما هي المهام التي تود أتمتتها؟</label>
-                    <textarea rows="4" class="w-full input-dark border text-white rounded-xl px-4 py-3 focus:outline-none focus:border-n8n-orange transition" placeholder="اوصف المهام المتكررة التي تأخذ أغلب وقت فريقك..."></textarea>
-                </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-n8n-orange to-n8n-red hover:from-n8n-red hover:to-n8n-orange text-white font-bold py-4 rounded-xl transition glow-button">
-                    إرسال الطلب واستلام الخطة
-                </button>
-            </form>
-            <div id="messageBox" class="hidden mt-6 p-4 rounded-xl text-center bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                شكراً لتواصلك! سنقوم بمراجعة طلبك والرد عليك في غضون 24 ساعة.
             </div>
         </div>
     </section>
@@ -399,15 +535,17 @@
     <!-- Footer -->
     <footer class="py-16 border-t border-white/5 text-center relative z-10 bg-[#0f1016]">
         <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
-            <img src="logo.png" alt="SIS Footer Logo" class="h-12 w-12 object-contain mb-4 opacity-80 grayscale hover:grayscale-0 transition duration-500" onerror="this.src='https://via.placeholder.com/48x48/555/FFF?text=SIS'">
+            <div class="h-12 w-12 bg-gradient-to-br from-n8n-orange to-n8n-red rounded-lg flex items-center justify-center text-white mb-4 shadow-lg">
+                <i class="fa-solid fa-network-wired text-xl"></i>
+            </div>
             <div class="text-xl font-bold mb-2 text-white">
                 SIS - Saidi Intelligent Systems
             </div>
             <p class="text-zinc-500 text-xs tracking-widest uppercase mb-8">Empowering business with smart workflows</p>
             <div class="flex space-x-reverse space-x-6 text-zinc-500 text-sm mb-8">
-                <a href="#" class="hover:text-n8n-orange transition">LinkedIn</a>
-                <a href="#" class="hover:text-n8n-orange transition">X (Twitter)</a>
-                <a href="#" class="hover:text-n8n-orange transition">Contact</a>
+                <a href="#" class="hover:text-n8n-orange transition hover:-translate-y-1 inline-block">LinkedIn</a>
+                <a href="#" class="hover:text-n8n-orange transition hover:-translate-y-1 inline-block">X (Twitter)</a>
+                <a href="#" class="hover:text-n8n-orange transition hover:-translate-y-1 inline-block">Contact</a>
             </div>
             <p class="text-zinc-600 text-xs">© 2026 جميع الحقوق محفوظة لـ Saidi Intelligent Systems.</p>
         </div>
@@ -415,19 +553,14 @@
 
     <!-- Integrated Vertical Floating Bar - RIGHT SIDE -->
     <div class="floating-bar">
-        <!-- WhatsApp -->
         <a href="https://wa.me/1234567890" target="_blank" class="contact-btn whatsapp">
             <i class="fab fa-whatsapp"></i>
             <span class="tooltip">واتساب</span>
         </a>
-
-        <!-- Telegram -->
         <a href="https://t.me/yourusername" target="_blank" class="contact-btn telegram">
             <i class="fab fa-telegram-plane"></i>
             <span class="tooltip">تيليجرام</span>
         </a>
-
-        <!-- Live Chat (Chatwoot) -->
         <div onclick="toggleChat()" class="contact-btn chatwoot" id="chat-trigger">
             <i class="fas fa-comments"></i>
             <span class="tooltip">محادثة مباشرة</span>
@@ -438,14 +571,11 @@
     <script type="module">
         import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js'
 
-        // Initialize the Typebot with your specific configuration
-        // Based on your link: https://typebot.panel.saidiautomation.com/typebots/cmkz5wst4000art4s8at5agte
         Typebot.initPopup({
             typebot: "cmkz5wst4000art4s8at5agte",
             apiHost: "https://typebot.panel.saidiautomation.com",
         });
 
-        // Global function to trigger the popup
         window.openTypebot = () => {
             if (typeof Typebot !== 'undefined') {
                 Typebot.open();
@@ -479,38 +609,59 @@
 
       function toggleChat() {
           if (window.$chatwoot) {
-              window.$chatwoot.toggle();
+             window.$chatwoot.toggle();
           }
       }
     </script>
 
     <!-- UI Interaction Scripts -->
     <script>
+        // Form Handling
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            this.style.display = 'none';
-            document.getElementById('messageBox').classList.remove('hidden');
+            const btn = this.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> جاري الإرسال...';
+            btn.disabled = true;
+            
+            // Simulate network delay for effect
+            setTimeout(() => {
+                this.style.display = 'none';
+                document.getElementById('messageBox').classList.remove('hidden');
+                document.getElementById('messageBox').classList.add('animate-bounce');
+            }, 1500);
         });
 
-        const reveal = () => {
-            const elements = document.querySelectorAll('.glass-card');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 50) {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }
-            });
+        // Scroll Reveal Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
         };
 
-        window.addEventListener('scroll', reveal);
-        window.addEventListener('load', () => {
-            document.querySelectorAll('.glass-card').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Stop observing once visible to prevent re-triggering
+                    observer.unobserve(entry.target);
+                }
             });
-            reveal();
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-xl', 'bg-[#0f1016]/95');
+                nav.classList.remove('bg-[#0f1016]/80');
+            } else {
+                nav.classList.remove('shadow-xl', 'bg-[#0f1016]/95');
+                nav.classList.add('bg-[#0f1016]/80');
+            }
         });
     </script>
 </body>
