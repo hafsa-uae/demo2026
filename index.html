@@ -84,10 +84,10 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #FF6D5A; }
 
-        /* Added Floating Bar Styles */
+        /* Floating Bar Styles - Right Side */
         .floating-bar {
             position: fixed;
-            left: 20px; /* Positioned on left because page is RTL */
+            right: 20px;
             bottom: 50%;
             transform: translateY(50%);
             display: flex;
@@ -118,7 +118,7 @@
 
         .contact-btn .tooltip {
             position: absolute;
-            left: 60px;
+            right: 60px;
             background: #181920;
             color: white;
             padding: 4px 12px;
@@ -141,7 +141,18 @@
         .telegram { background-color: #0088cc; }
         .chatwoot { background-color: #FF6D5A; }
 
-        /* Hide Chatwoot Branding */
+        /* MASKING THE DEFAULT CHATWOOT BUBBLE */
+        /* This hides the original bubble while keeping the script active */
+        .woot-widget-bubble, 
+        .woot--bubble-holder,
+        #chatwoot-widget-container .woot-widget-bubble {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        /* Hide Chatwoot Branding in the popup */
         .woot-widget-bubble-brand,
         [class*="woot-widget-bubble--brand"], 
         .woot-widget-bubble--brand,
@@ -412,24 +423,24 @@
         </div>
     </footer>
 
-    <!-- Integrated Vertical Floating Bar -->
+    <!-- Integrated Vertical Floating Bar - RIGHT SIDE -->
     <div class="floating-bar">
         <!-- WhatsApp -->
         <a href="https://wa.me/1234567890" target="_blank" class="contact-btn whatsapp">
             <i class="fab fa-whatsapp"></i>
-            <span class="tooltip">WhatsApp</span>
+            <span class="tooltip">واتساب</span>
         </a>
 
         <!-- Telegram -->
         <a href="https://t.me/yourusername" target="_blank" class="contact-btn telegram">
             <i class="fab fa-telegram-plane"></i>
-            <span class="tooltip">Telegram</span>
+            <span class="tooltip">تيليجرام</span>
         </a>
 
-        <!-- Chatwoot (Simulated) -->
+        <!-- Live Chat - THIS IS YOUR CUSTOM TRIGGER -->
         <div onclick="toggleChat()" class="contact-btn chatwoot" id="chat-trigger">
             <i class="fas fa-comments"></i>
-            <span class="tooltip">Live Chat</span>
+            <span class="tooltip">محادثة مباشرة</span>
         </div>
     </div>
 
@@ -455,7 +466,7 @@
         }
       })(document,"script");
 
-      // Function to toggle Chatwoot widget
+      // Function to toggle Chatwoot widget manually
       function toggleChat() {
           if (window.$chatwoot) {
               window.$chatwoot.toggle();
