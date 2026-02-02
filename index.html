@@ -103,19 +103,10 @@
             transform: translateY(-2px);
         }
 
-        .logo-shadow {
-            filter: drop-shadow(0 0 10px rgba(255, 109, 90, 0.4));
+        .logo-img {
+            max-height: 40px;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
         }
-
-        .input-dark {
-            background-color: #13141b;
-            border-color: #2d2d3a;
-        }
-        
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f1016; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #FF6D5A; }
 
         .reveal-on-scroll {
             opacity: 0;
@@ -136,85 +127,25 @@
         
         .marquee-content {
             display: inline-block;
-            animation: marquee 20s linear infinite;
+            animation: marquee 25s linear infinite;
         }
         
         @keyframes marquee {
             0% { transform: translateX(0); }
-            100% { transform: translateX(50%); } 
-        }
-
-        .floating-bar {
-            position: fixed;
-            right: 20px;
-            bottom: 50%;
-            transform: translateY(50%);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 1000;
-        }
-
-        .contact-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            position: relative;
-            text-decoration: none;
-        }
-
-        .contact-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .contact-btn .tooltip {
-            position: absolute;
-            right: 60px;
-            background: #181920;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.2s;
-            pointer-events: none;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .contact-btn:hover .tooltip {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .whatsapp { background-color: #25D366; }
-        .telegram { background-color: #0088cc; }
-        .chatwoot { background-color: #FF6D5A; }
-
-        .tech-visual-container {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            100% { transform: translateX(100%); } 
         }
 
         .tech-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(40px);
+            filter: blur(60px);
             mix-blend-mode: screen;
             z-index: 1;
+        }
+
+        /* Image Mask for professional look */
+        .image-mask {
+            mask-image: linear-gradient(to left, black 80%, transparent 100%);
         }
     </style>
 </head>
@@ -222,25 +153,26 @@
 
     <!-- Header -->
     <nav class="fixed w-full z-50 bg-[#0f1016]/80 backdrop-blur-md border-b border-white/5 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="h-10 w-10 bg-gradient-to-br from-n8n-orange to-n8n-red rounded-lg flex items-center justify-center text-white shadow-lg logo-shadow">
-                    <i class="fa-solid fa-network-wired"></i>
-                </div>
-                <div class="flex flex-col leading-tight hidden sm:block">
-                    <span class="text-[16px] font-bold text-white tracking-tight">SIS - Saidi Intelligent Systems</span>
-                </div>
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <!-- Requested Logo -->
+                <a href="#" class="flex items-center gap-3">
+                    <img src="https://raw.githubusercontent.com/hafsa-uae/demo2026/main/logo.png" alt="SIS Logo" class="logo-img">
+                    <div class="flex flex-col leading-tight hidden sm:block">
+                        <span class="text-[14px] font-bold text-white tracking-tight">SIS</span>
+                        <span class="text-[10px] text-zinc-500 font-medium">Saidi Intelligent Systems</span>
+                    </div>
+                </a>
             </div>
             
             <div class="hidden md:flex space-x-reverse space-x-8">
                 <a href="#" class="text-zinc-300 hover:text-n8n-orange transition font-medium text-sm">الرئيسية</a>
                 <a href="#services" class="text-zinc-300 hover:text-n8n-orange transition font-medium text-sm">خدماتنا</a>
                 <a href="#pricing" class="text-zinc-300 hover:text-n8n-orange transition font-medium text-sm">الأسعار</a>
-                <a href="#stats" class="text-zinc-300 hover:text-n8n-orange transition font-medium text-sm">إحصائيات</a>
                 <a href="#contact" class="text-zinc-300 hover:text-n8n-orange transition font-medium text-sm">تواصل معنا</a>
             </div>
 
-            <button class="bg-gradient-to-r from-n8n-orange to-n8n-red text-white px-6 py-2 rounded-lg text-sm font-bold transition glow-button hover:scale-105">
+            <button class="bg-gradient-to-r from-n8n-orange to-n8n-red text-white px-6 py-2.5 rounded-lg text-sm font-bold transition glow-button hover:scale-105">
                 ابدأ رحلتك
             </button>
         </div>
@@ -251,20 +183,21 @@
         <div class="bg-grid-pattern h-screen w-full fixed top-0 left-0"></div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                
                 <!-- Text Content -->
                 <div class="text-center lg:text-right order-2 lg:order-1">
                     <div class="inline-block mb-6 px-4 py-1.5 rounded-full border border-n8n-orange/30 bg-n8n-orange/10 text-n8n-orange text-sm font-bold backdrop-blur-sm">
-                        <i class="fa-solid fa-bolt-lightning ml-2"></i> حلول الأتمتة والذكاء الاصطناعي المتطورة
+                        <i class="fa-solid fa-robot ml-2"></i> مستقبل الأعمال مع الوكلاء الأذكياء
                     </div>
                     <h1 class="text-4xl lg:text-6xl font-extrabold mb-6 leading-tight text-white">
-                        توقف عن العمل كآلة <br>
+                        وظّف ذكاءً <br>
                         <span class="bg-gradient-to-r from-n8n-orange via-n8n-red to-n8n-purple bg-clip-text text-transparent">
-                            حرّر طموحك من قيود المهام اليدوية
+                            لا ينام ولا يخطئ
                         </span>
                     </h1>
                     <p class="text-lg text-zinc-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                       نحن هنا لنعيد صياغة طريقة عملك. نربط تطبيقاتك ببعضها البعض ونستخدم الذكاء الاصطناعي لنحول الفوضى إلى نظام متناغم يعمل بدقة متناهية.
+                        نقوم بتصميم وبناء وكلاء ذكاء اصطناعي (AI Agents) مخصصين لعملك، يقومون بإدارة المهام، التواصل مع العملاء، وأتمتة سير العمل بالكامل بينما تركز أنت على النمو.
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
                         <button class="bg-n8n-orange hover:bg-n8n-red text-white px-8 py-4 rounded-xl text-lg font-bold transition glow-button flex items-center justify-center gap-2 group">
@@ -272,106 +205,141 @@
                             <i class="fa-solid fa-arrow-left group-hover:translate-x-1 transition-transform"></i>
                         </button>
                         <a href="#services" class="border border-zinc-700 hover:bg-white/5 text-white px-8 py-4 rounded-xl text-lg font-bold transition flex items-center justify-center">
-                            استكشف خدماتنا
+                            شاهد كيف نعمل
                         </a>
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div class="mt-12 flex items-center justify-center lg:justify-start gap-6 opacity-50">
+                        <div class="flex flex-col items-center lg:items-start">
+                            <span class="text-2xl font-bold text-white">99%</span>
+                            <span class="text-xs text-zinc-500">دقة الأتمتة</span>
+                        </div>
+                        <div class="w-px h-8 bg-zinc-800"></div>
+                        <div class="flex flex-col items-center lg:items-start">
+                            <span class="text-2xl font-bold text-white">24/7</span>
+                            <span class="text-xs text-zinc-500">تشغيل مستمر</span>
+                        </div>
+                        <div class="w-px h-8 bg-zinc-800"></div>
+                        <div class="flex flex-col items-center lg:items-start">
+                            <span class="text-2xl font-bold text-white">+500</span>
+                            <span class="text-xs text-zinc-500">ساعة عمل موفرة</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- NEW PROFESSIONAL HERO IMAGE -->
+                <!-- Professional Hero Image: AI Agent Concept -->
                 <div class="order-1 lg:order-2 relative group animate-float">
-                    <!-- Tech Visualization -->
-                    <div class="relative z-10 rounded-2xl border border-white/10 overflow-hidden shadow-2xl bg-[#13141b]">
-                        <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=1000&auto=format&fit=crop" 
-                             alt="Professional Tech Automation" 
-                             class="w-full h-[500px] object-cover opacity-60 group-hover:scale-110 transition duration-1000">
+                    <div class="relative z-10 rounded-3xl border border-white/10 overflow-hidden shadow-2xl bg-[#13141b] aspect-square lg:aspect-auto lg:h-[600px]">
+                        <!-- New Professional Image: Cybernetic Intelligence / AI Core -->
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000&auto=format&fit=crop" 
+                             alt="AI Agent Intelligence" 
+                             class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-[2s]">
                         
-                        <!-- Overlay Gradients -->
+                        <!-- HUD Overlay Effects -->
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0f1016] via-transparent to-transparent"></div>
-                        <div class="absolute inset-0 bg-gradient-to-r from-n8n-orange/20 to-n8n-purple/20 mix-blend-overlay"></div>
-
-                        <!-- Floating Micro-Interaction UI -->
-                        <div class="absolute inset-0 p-8 flex flex-col justify-between pointer-events-none">
-                            <div class="flex justify-between items-start">
-                                <div class="bg-white/5 backdrop-blur-md p-3 rounded-lg border border-white/10 animate-pulse">
-                                    <div class="h-2 w-12 bg-n8n-orange rounded mb-2"></div>
-                                    <div class="h-2 w-8 bg-zinc-600 rounded"></div>
+                        
+                        <!-- Floating Data Cards -->
+                        <div class="absolute top-10 right-10 bg-black/40 backdrop-blur-xl p-4 rounded-2xl border border-white/10 animate-pulse">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-n8n-orange/20 flex items-center justify-center">
+                                    <i class="fa-solid fa-chart-line text-n8n-orange text-sm"></i>
                                 </div>
-                                <div class="bg-n8n-purple/20 backdrop-blur-md p-3 rounded-lg border border-n8n-purple/30">
-                                    <i class="fa-solid fa-microchip text-n8n-purple text-xl"></i>
-                                </div>
-                            </div>
-                            
-                            <div class="flex flex-col gap-3 items-end">
-                                <div class="bg-black/60 backdrop-blur-xl px-4 py-3 rounded-xl border border-white/10 flex items-center gap-3 translate-x-4">
-                                    <div class="w-2 h-2 rounded-full bg-green-500 animate-ping"></div>
-                                    <span class="text-xs font-bold text-white tracking-wider">الخادم: متصل</span>
-                                </div>
-                                <div class="bg-gradient-to-r from-n8n-orange/80 to-n8n-red/80 backdrop-blur-xl px-5 py-3 rounded-xl border border-white/10 flex items-center gap-3 shadow-lg">
-                                    <i class="fa-solid fa-brain text-white text-sm"></i>
-                                    <span class="text-sm font-bold text-white">تحليل البيانات جاري...</span>
+                                <div>
+                                    <p class="text-[10px] text-zinc-500 uppercase">Efficiency Boost</p>
+                                    <p class="text-sm font-bold text-white">+340%</p>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="absolute bottom-20 left-10 bg-white/5 backdrop-blur-2xl p-5 rounded-2xl border border-white/10 max-w-[200px]">
+                            <div class="flex gap-2 mb-3">
+                                <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                                <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                                <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                            </div>
+                            <p class="text-xs font-mono text-n8n-orange mb-1">> Agent_Status: Active</p>
+                            <p class="text-xs font-mono text-zinc-400 mb-1">> Learning_Model: V4.2</p>
+                            <p class="text-xs font-mono text-zinc-400">> Syncing_Data...</p>
+                        </div>
+
+                        <!-- Central Glow -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-n8n-orange/20 blur-[100px] rounded-full pointer-events-none"></div>
                     </div>
 
-                    <!-- Background Glow Elements -->
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] -z-10">
-                        <div class="tech-orb w-1/2 h-1/2 bg-n8n-orange/30 top-0 left-0 animate-pulse"></div>
-                        <div class="tech-orb w-1/2 h-1/2 bg-n8n-purple/30 bottom-0 right-0 animate-pulse" style="animation-delay: 1.5s"></div>
-                    </div>
+                    <!-- Decorative Background Orbs -->
+                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-n8n-purple/30 rounded-full blur-[80px] -z-10 animate-pulse"></div>
+                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-n8n-red/30 rounded-full blur-[80px] -z-10 animate-pulse" style="animation-delay: 2s"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Rest of the sections (Integrations, Services, Pricing, etc.) follow the same pattern... -->
-    <!-- [Rest of the HTML content remains largely the same but with enhanced polish] -->
-    
     <!-- Integrations Marquee -->
-    <section class="py-10 border-y border-white/5 bg-black/20 overflow-hidden relative z-20">
-        <div class="max-w-7xl mx-auto px-6 mb-6 text-center">
-            <p class="text-zinc-500 text-sm font-medium uppercase tracking-widest">نربط أدواتك المفضلة بسلاسة</p>
+    <section class="py-12 border-y border-white/5 bg-black/40 overflow-hidden relative z-20">
+        <div class="max-w-7xl mx-auto px-6 mb-8 text-center">
+            <p class="text-zinc-500 text-sm font-bold uppercase tracking-[0.2em]">الأنظمة التي نقوم بأتمتتها</p>
         </div>
-        <div class="marquee-container opacity-60 hover:opacity-100 transition-opacity duration-500">
-            <div class="marquee-content text-2xl text-zinc-400 font-bold flex gap-16 px-4">
-                <span class="flex items-center gap-2"><i class="fab fa-google text-white"></i> Google Workspace</span>
-                <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-n8n-orange"></i> n8n</span>
-                <span class="flex items-center gap-2"><i class="fab fa-slack text-white"></i> Slack</span>
-                <span class="flex items-center gap-2"><i class="fas fa-brain text-n8n-purple"></i> OpenAI</span>
-                <span class="flex items-center gap-2"><i class="fab fa-hubspot text-n8n-orange"></i> HubSpot</span>
-                <span class="flex items-center gap-2"><i class="fab fa-shopify text-green-500"></i> Shopify</span>
-                <span class="flex items-center gap-2"><i class="fab fa-telegram text-blue-400"></i> Telegram</span>
-                <span class="flex items-center gap-2"><i class="fas fa-table text-green-600"></i> Airtable</span>
+        <div class="marquee-container opacity-40 hover:opacity-100 transition-opacity duration-700">
+            <div class="marquee-content text-2xl text-zinc-400 font-bold flex gap-20 px-4">
+                <span class="flex items-center gap-3"><i class="fab fa-google"></i> Google Cloud</span>
+                <span class="flex items-center gap-3"><i class="fa-solid fa-bolt text-n8n-orange"></i> n8n.io</span>
+                <span class="flex items-center gap-3"><i class="fab fa-slack"></i> Slack HQ</span>
+                <span class="flex items-center gap-3"><i class="fas fa-brain text-n8n-purple"></i> ChatGPT-4o</span>
+                <span class="flex items-center gap-3"><i class="fab fa-hubspot text-orange-400"></i> HubSpot</span>
+                <span class="flex items-center gap-3"><i class="fab fa-shopify text-green-500"></i> Shopify</span>
+                <span class="flex items-center gap-3"><i class="fab fa-whatsapp text-emerald-500"></i> WhatsApp Business</span>
+                <span class="flex items-center gap-3"><i class="fas fa-database"></i> SQL / NoSQL</span>
+                <!-- Duplicate for seamless loop -->
+                <span class="flex items-center gap-3"><i class="fab fa-google"></i> Google Cloud</span>
+                <span class="flex items-center gap-3"><i class="fa-solid fa-bolt text-n8n-orange"></i> n8n.io</span>
             </div>
         </div>
     </section>
 
-    <!-- Footer and scripts... -->
-    <footer class="py-16 border-t border-white/5 text-center relative z-10 bg-[#0f1016]">
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center relative z-10 bg-[#0f1016]">
         <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
-            <div class="h-12 w-12 bg-gradient-to-br from-n8n-orange to-n8n-red rounded-lg flex items-center justify-center text-white mb-4 shadow-lg">
-                <i class="fa-solid fa-network-wired text-xl"></i>
+            <img src="https://raw.githubusercontent.com/hafsa-uae/demo2026/main/logo.png" alt="SIS Logo" class="h-12 mb-6 opacity-80 grayscale hover:grayscale-0 transition duration-500">
+            <div class="text-xl font-bold mb-2 text-white">Saidi Intelligent Systems</div>
+            <p class="text-zinc-500 text-sm mb-8">تمكين الشركات من خلال الذكاء الاصطناعي والأتمتة الذكية.</p>
+            
+            <div class="flex gap-6 mb-12">
+                <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-n8n-orange transition"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-n8n-orange transition"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-n8n-orange transition"><i class="fab fa-instagram"></i></a>
             </div>
-            <div class="text-xl font-bold mb-2 text-white">SIS - Saidi Intelligent Systems</div>
-            <p class="text-zinc-600 text-xs">© 2026 جميع الحقوق محفوظة لـ Saidi Intelligent Systems.</p>
+
+            <p class="text-zinc-600 text-[10px] uppercase tracking-widest">© 2026 SIS - Saidi Intelligent Systems. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
     <script>
-        // Reveal animation on scroll
+        // Simple scroll reveal
         const reveal = () => {
             const reveals = document.querySelectorAll(".reveal-on-scroll");
             reveals.forEach(r => {
                 const windowHeight = window.innerHeight;
                 const elementTop = r.getBoundingClientRect().top;
-                const elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
+                if (elementTop < windowHeight - 100) {
                     r.classList.add("visible");
                 }
             });
         };
         window.addEventListener("scroll", reveal);
         window.onload = reveal;
+
+        // Navbar scroll effect
+        window.addEventListener("scroll", () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2', 'bg-[#0f1016]');
+                nav.classList.remove('py-4', 'bg-[#0f1016]/80');
+            } else {
+                nav.classList.remove('py-2', 'bg-[#0f1016]');
+                nav.classList.add('py-4', 'bg-[#0f1016]/80');
+            }
+        });
     </script>
 </body>
 </html>
