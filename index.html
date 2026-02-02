@@ -1,472 +1,604 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وكالة الأتمتة الرقمية | SIS - Saidi Intelligent Systems</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Added Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        n8n: {
-                            orange: '#FF6D5A',
-                            red: '#EA4B71',
-                            purple: '#9052DE',
-                            dark: '#0f1016',
-                            card: '#181920'
-                        }
-                    }
-                }
-            }
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>وكالة الأتمتة الرقمية | SIS - Saidi Intelligent Systems</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&amp;family=Tajawal:wght@300;400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+        * {
+            box-sizing: border-box;
         }
-    </script>
-    <style>
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Tajawal', sans-serif;
             scroll-behavior: smooth;
-            background-color: #0f1016;
-            color: #e2e8f0;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            overflow-x: hidden;
         }
 
-        /* n8n Style Grid Background */
-        .bg-grid-pattern {
-            background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px),
-                              linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);
-            background-size: 50px 50px;
-            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-            opacity: 0.15;
+        /* Canva Template Background */
+        .hero-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #9d4edd 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
             position: absolute;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 15% 30%, rgba(157, 78, 221, 0.3) 0%, transparent 25%),
+                radial-gradient(circle at 85% 70%, rgba(83, 52, 131, 0.3) 0%, transparent 30%),
+                radial-gradient(circle at 50% 50%, rgba(255, 109, 90, 0.15) 0%, transparent 40%);
+            z-index: 1;
         }
 
-        .hero-gradient {
-            background: radial-gradient(circle at center, #1c1d29 0%, #0f1016 100%);
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            background-size: 200px 200px;
+            z-index: 1;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
-        .glow-button {
+        /* Smooth animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .animate-slide-in {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        /* Card styles */
+        .service-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(255, 109, 90, 0.3);
-        }
-        
-        .glow-button:hover {
-            box-shadow: 0 0 25px rgba(255, 109, 90, 0.6);
-            transform: translateY(-2px);
+            border: 1px solid rgba(255,109,90,0.1);
         }
 
-        .logo-shadow {
-            filter: drop-shadow(0 0 10px rgba(255, 109, 90, 0.4));
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255,109,90,0.15);
+            border-color: #FF6D5A;
         }
 
-        .input-dark {
-            background-color: #13141b;
-            border-color: #2d2d3a;
-        }
-        
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f1016; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #FF6D5A; }
-
-        /* Floating Bar Styles - Right Side */
-        .floating-bar {
-            position: fixed;
-            right: 20px;
-            bottom: 50%;
-            transform: translateY(50%);
+        .icon-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
-            gap: 12px;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .icon-circle {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Button styles */
+        .btn-primary {
+            background: linear-gradient(135deg, #FF6D5A 0%, #EA4B71 100%);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(255,109,90,0.3);
+            display: inline-block;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(255,109,90,0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #FF6D5A;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 2px solid #FF6D5A;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .btn-secondary:hover {
+            background: #FF6D5A;
+            color: white;
+        }
+
+        /* Section spacing */
+        .section-padding {
+            padding: 80px 20px;
+        }
+
+        .max-width-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Navbar styles */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            top: 0;
+            width: 100%;
             z-index: 1000;
         }
 
+        nav a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 8px 16px;
+        }
+
+        nav a:hover {
+            color: #FF6D5A;
+        }
+
+        /* Stats grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .stat-item h3 {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF6D5A 0%, #EA4B71 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        /* Portfolio grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .portfolio-item {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, rgba(255,109,90,0.1) 0%, rgba(234,75,113,0.1) 100%);
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255,109,90,0.2);
+        }
+
+        /* Contact form */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Tajawal', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FF6D5A;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 60px 20px 30px;
+        }
+
+        /* Floating contact bar */
+        .floating-bar {
+            position: fixed;
+            right: 20px;
+            bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 999;
+        }
+
         .contact-btn {
-            width: 50px;
-            height: 50px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             position: relative;
             text-decoration: none;
+            border: none;
         }
 
         .contact-btn:hover {
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
 
         .contact-btn .tooltip {
             position: absolute;
-            right: 60px;
-            background: #181920;
+            right: 70px;
+            background: rgba(26, 26, 26, 0.95);
             color: white;
-            padding: 4px 12px;
+            padding: 10px 14px;
             border-radius: 6px;
-            font-size: 12px;
             white-space: nowrap;
+            font-size: 13px;
             opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.2s;
             pointer-events: none;
-            border: 1px solid rgba(255,255,255,0.1);
+            transition: opacity 0.3s ease;
         }
 
         .contact-btn:hover .tooltip {
             opacity: 1;
-            visibility: visible;
         }
 
-        .whatsapp { background-color: #25D366; }
-        .telegram { background-color: #0088cc; }
-        .chatwoot { background-color: #FF6D5A; }
-
-        /* Hide Chatwoot Branding & Original Bubble */
-        .woot-widget-bubble, 
-        .woot--bubble-holder,
-        #chatwoot-widget-container .woot-widget-bubble,
-        .woot-widget-bubble-brand,
-        a[href*="chatwoot.com"] {
-            display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            pointer-events: none !important;
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
         }
-    </style>
-</head>
-<body class="relative">
 
-    <!-- Header -->
-    <nav class="fixed w-full z-50 bg-[#0f1016]/80 backdrop-blur-md border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <img src="logo.png" alt="SIS Logo" class="h-10 w-10 object-contain logo-shadow" onerror="this.src='https://via.placeholder.com/40x40/FF6D5A/FFFFFF?text=SIS'">
-                <div class="flex flex-col leading-tight hidden sm:block">
-                    <span class="text-[16px] font-bold text-white tracking-tight">SIS - Saidi Intelligent Systems</span>
-                </div>
-            </div>
-            
-            <div class="hidden md:flex space-x-reverse space-x-8">
-                <a href="#" class="text-zinc-300 hover:text-n8n-orange transition font-medium">الرئيسية</a>
-                <a href="#services" class="text-zinc-300 hover:text-n8n-orange transition font-medium">خدماتنا</a>
-                <a href="#pricing" class="text-zinc-300 hover:text-n8n-orange transition font-medium">الأسعار</a>
-                <a href="#stats" class="text-zinc-300 hover:text-n8n-orange transition font-medium">إحصائيات</a>
-                <a href="#contact" class="text-zinc-300 hover:text-n8n-orange transition font-medium">تواصل معنا</a>
-            </div>
+        .telegram-btn {
+            background: linear-gradient(135deg, #0088cc 0%, #005fa3 100%);
+        }
 
-            <button onclick="openTypebot()" class="bg-gradient-to-r from-n8n-orange to-n8n-red text-white px-6 py-2 rounded-lg text-sm font-bold transition glow-button">
-                ابدأ رحلتك
-            </button>
-        </div>
-    </nav>
+        .email-btn {
+            background: linear-gradient(135deg, #FF6D5A 0%, #EA4B71 100%);
+        }
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 hero-gradient overflow-hidden">
-        <div class="bg-grid-pattern h-screen w-full fixed top-0 left-0"></div>
+        .chatwoot-btn {
+            background: linear-gradient(135deg, #9052DE 0%, #7B3FF2 100%);
+        }
 
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-n8n-orange/10 rounded-full blur-[120px]"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-n8n-purple/10 rounded-full blur-[120px]"></div>
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 60px 16px;
+            }
 
-        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-            <div class="inline-block mb-6 px-4 py-1 rounded-full border border-n8n-orange/30 bg-n8n-orange/10 text-n8n-orange text-sm font-medium">
-                ✨الجيل الجديد من الأتمتة والذكاء الاصطناعي
-            </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-8 leading-tight text-white">
-                توقف عن العمل كآلة.. <br>
-                <span class="bg-gradient-to-r from-n8n-orange via-n8n-red to-n8n-purple bg-clip-text text-transparent">
-                    حرّر طموحك من قيود المهام اليدوية
-                </span>، <br>
-                وحوّل أعمالك إلى محرك رقمي
-            </h1>
-            <p class="text-lg md:text-xl text-zinc-400 mb-10 max-w-2xl mx-auto">
-                نحن هنا لنعيد صياغة طريقة عملك. نربط تطبيقاتك ببعضها البعض ونستخدم الذكاء الاصطناعي لنحول الفوضى إلى نظام متناغم يعمل بدقة متناهية.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <!-- Triggering Typebot via the button mentioned -->
-                <button onclick="openTypebot()" class="bg-n8n-orange hover:bg-n8n-red text-white px-8 py-4 rounded-xl text-lg font-bold transition glow-button">
-                    احصل على استشارة مجانية
-                </button>
-                <a href="#services" class="border border-zinc-700 hover:bg-white/5 text-white px-8 py-4 rounded-xl text-lg font-bold transition">
-                    استكشف خدماتنا
-                </a>
-            </div>
-        </div>
-    </section>
+            .hero-section h1 {
+                font-size: 36px !important;
+            }
 
-    <!-- Services Section -->
-    <section id="services" class="py-24 relative z-10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">كيف نغير قواعد اللعبة؟</h2>
-                <p class="text-zinc-400">حلولنا مصممة لنمو أعمالك دون زيادة في الأعباء اليدوية</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl hover:border-n8n-orange/50 transition group">
-                    <div class="w-14 h-14 bg-n8n-orange/10 rounded-xl flex items-center justify-center mb-6 text-n8n-orange group-hover:bg-n8n-orange group-hover:text-white transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">أتمتة العمليات (Workflow)</h3>
-                    <p class="text-zinc-400 leading-relaxed">بناء تدفقات عمل معقدة تربط جميع تطبيقاتك ببعضها البعض لتعمل بتناغم تام دون تدخل بشري.</p>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl hover:border-n8n-purple/50 transition group">
-                    <div class="w-14 h-14 bg-n8n-purple/10 rounded-xl flex items-center justify-center mb-6 text-n8n-purple group-hover:bg-n8n-purple group-hover:text-white transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">وكلاء الذكاء الاصطناعي</h3>
-                    <p class="text-zinc-400 leading-relaxed">دمج نماذج LLMs المتقدمة في عملياتك لاتخاذ قرارات ذكية وتحليل المحتوى بشكل آلي ولحظي.</p>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl hover:border-n8n-red/50 transition group">
-                    <div class="w-14 h-14 bg-n8n-red/10 rounded-xl flex items-center justify-center mb-6 text-n8n-red group-hover:bg-n8n-red group-hover:text-white transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">هيكلة البيانات الذكية</h3>
-                    <p class="text-zinc-400 leading-relaxed">تحويل بياناتك الخام والمتناثرة إلى هياكل منظمة جاهزة للتحليل واتخاذ القرار بدقة 100%.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-24 relative z-10 bg-white/5">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">خطط استثمار مرنة</h2>
-                <p class="text-zinc-400">اختر الخطة التي تناسب حجم طموحك وعملك</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Basic Plan -->
-                <div class="glass-card p-8 rounded-3xl border-white/5 flex flex-col">
-                    <h3 class="text-xl font-bold text-white mb-2">البداية الذكية</h3>
-                    <p class="text-zinc-500 text-sm mb-6">للمشاريع الصغيرة والناشئة</p>
-                    <div class="text-4xl font-bold text-white mb-6">$499 <span class="text-sm font-normal text-zinc-500">/مشروع</span></div>
-                    <ul class="space-y-4 mb-8 flex-grow">
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            أتمتة حتى 3 عمليات أساسية
-                        </li>
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            ربط حتى 5 تطبيقات مختلفة
-                        </li>
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            دعم فني عبر البريد
-                        </li>
-                    </ul>
-                    <button onclick="openTypebot()" class="w-full text-center py-3 rounded-xl border border-zinc-700 text-white hover:bg-white/5 transition font-bold">ابدأ الآن</button>
-                </div>
-
-                <!-- Pro Plan -->
-                <div class="glass-card p-8 rounded-3xl border-n8n-orange/50 relative overflow-hidden flex flex-col scale-105 z-20 bg-n8n-dark">
-                    <div class="absolute top-0 right-0 bg-n8n-orange text-white px-4 py-1 text-xs font-bold rounded-bl-xl">الأكثر طلباً</div>
-                    <h3 class="text-xl font-bold text-white mb-2">احتراف الأتمتة</h3>
-                    <p class="text-zinc-500 text-sm mb-6">للوكالات والشركات المتوسطة</p>
-                    <div class="text-4xl font-bold text-white mb-6">$1,299 <span class="text-sm font-normal text-zinc-500">/مشروع</span></div>
-                    <ul class="space-y-4 mb-8 flex-grow">
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm font-bold italic">
-                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            أتمتة عمليات غير محدودة
-                        </li>
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            دمج وكلاء الذكاء الاصطناعي (AI)
-                        </li>
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            تدريب الفريق على النظام
-                        </li>
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            أولوية في الدعم الفني
-                        </li>
-                    </ul>
-                    <button onclick="openTypebot()" class="w-full text-center py-4 rounded-xl bg-n8n-orange text-white hover:bg-n8n-red transition font-bold glow-button">اطلبها الآن</button>
-                </div>
-
-                <!-- Custom Plan -->
-                <div class="glass-card p-8 rounded-3xl border-white/5 flex flex-col">
-                    <h3 class="text-xl font-bold text-white mb-2">مخصص (Enterprise)</h3>
-                    <p class="text-zinc-500 text-sm mb-6">حلول شاملة للمنظمات الكبيرة</p>
-                    <div class="text-4xl font-bold text-white mb-6">تواصل معنا</div>
-                    <ul class="space-y-4 mb-8 flex-grow">
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-purple" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            بنية تحتية خاصة (On-premise)
-                        </li>
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-purple" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            أنظمة أمان متقدمة
-                        </li>
-                        <li class="flex items-center gap-2 text-zinc-300 text-sm">
-                            <svg class="w-5 h-5 text-n8n-purple" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                            إدارة كاملة للسيرفرات
-                        </li>
-                    </ul>
-                    <button onclick="openTypebot()" class="w-full text-center py-3 rounded-xl border border-zinc-700 text-white hover:bg-white/5 transition font-bold">تواصل للمزيد</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section id="stats" class="py-20 border-y border-white/5 bg-[#0f1016] relative z-10">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-                <div class="text-4xl font-bold text-n8n-orange mb-2">90%</div>
-                <div class="text-zinc-500 text-sm font-medium">تقليل في الخطأ البشري</div>
-            </div>
-            <div>
-                <div class="text-4xl font-bold text-n8n-purple mb-2">+150</div>
-                <div class="text-zinc-500 text-sm font-medium">سيناريو مؤتمت بنجاح</div>
-            </div>
-            <div>
-                <div class="text-4xl font-bold text-white mb-2">24/7</div>
-                <div class="text-zinc-500 text-sm font-medium">عمل بلا توقف</div>
-            </div>
-            <div>
-                <div class="text-4xl font-bold text-n8n-red mb-2">60%</div>
-                <div class="text-zinc-500 text-sm font-medium">توفير في الوقت</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Form Section -->
-    <section id="contact" class="py-24 relative z-10">
-        <div class="max-w-3xl mx-auto px-6 bg-[#181920] p-10 rounded-3xl border border-white/10 shadow-2xl">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4 text-white">هل أنت جاهز للتحول الرقمي؟</h2>
-                <p class="text-zinc-400">أخبرنا عن التحديات التي تواجهها، وسنقوم ببناء محرك الأتمتة الخاص بك.</p>
-            </div>
-            <form id="contactForm" class="space-y-6">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-medium mb-2 text-zinc-300">الاسم بالكامل</label>
-                        <input type="text" class="w-full input-dark border text-white rounded-xl px-4 py-3 focus:outline-none focus:border-n8n-orange transition" required placeholder="الاسم الكريم">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2 text-zinc-300">البريد الإلكتروني</label>
-                        <input type="email" class="w-full input-dark border text-white rounded-xl px-4 py-3 focus:outline-none focus:border-n8n-orange transition" required placeholder="name@company.com">
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium mb-2 text-zinc-300">مجال العمل</label>
-                    <input type="text" class="w-full input-dark border text-white rounded-xl px-4 py-3 focus:outline-none focus:border-n8n-orange transition" placeholder="مثال: تجارة إلكترونية، وكالة تسويق...">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium mb-2 text-zinc-300">ما هي المهام التي تود أتمتتها؟</label>
-                    <textarea rows="4" class="w-full input-dark border text-white rounded-xl px-4 py-3 focus:outline-none focus:border-n8n-orange transition" placeholder="اوصف المهام المتكررة التي تأخذ أغلب وقت فريقك..."></textarea>
-                </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-n8n-orange to-n8n-red hover:from-n8n-red hover:to-n8n-orange text-white font-bold py-4 rounded-xl transition glow-button">
-                    إرسال الطلب واستلام الخطة
-                </button>
-            </form>
-            <div id="messageBox" class="hidden mt-6 p-4 rounded-xl text-center bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                شكراً لتواصلك! سنقوم بمراجعة طلبك والرد عليك في غضون 24 ساعة.
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-16 border-t border-white/5 text-center relative z-10 bg-[#0f1016]">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
-            <img src="logo.png" alt="SIS Footer Logo" class="h-12 w-12 object-contain mb-4 opacity-80 grayscale hover:grayscale-0 transition duration-500" onerror="this.src='https://via.placeholder.com/48x48/555/FFF?text=SIS'">
-            <div class="text-xl font-bold mb-2 text-white">
-                SIS - Saidi Intelligent Systems
-            </div>
-            <p class="text-zinc-500 text-xs tracking-widest uppercase mb-8">Empowering business with smart workflows</p>
-            <div class="flex space-x-reverse space-x-6 text-zinc-500 text-sm mb-8">
-                <a href="#" class="hover:text-n8n-orange transition">LinkedIn</a>
-                <a href="#" class="hover:text-n8n-orange transition">X (Twitter)</a>
-                <a href="#" class="hover:text-n8n-orange transition">Contact</a>
-            </div>
-            <p class="text-zinc-600 text-xs">© 2026 جميع الحقوق محفوظة لـ Saidi Intelligent Systems.</p>
-        </div>
-    </footer>
-
-    <!-- Integrated Vertical Floating Bar - RIGHT SIDE -->
-    <div class="floating-bar">
-        <!-- WhatsApp -->
-        <a href="https://wa.me/1234567890" target="_blank" class="contact-btn whatsapp">
-            <i class="fab fa-whatsapp"></i>
-            <span class="tooltip">واتساب</span>
-        </a>
-
-        <!-- Telegram -->
-        <a href="https://t.me/yourusername" target="_blank" class="contact-btn telegram">
-            <i class="fab fa-telegram-plane"></i>
-            <span class="tooltip">تيليجرام</span>
-        </a>
-
-        <!-- Live Chat (Chatwoot) -->
-        <div onclick="toggleChat()" class="contact-btn chatwoot" id="chat-trigger">
-            <i class="fas fa-comments"></i>
-            <span class="tooltip">محادثة مباشرة</span>
-        </div>
-    </div>
-
-    <!-- Typebot Integration Script -->
-    <script type="module">
-        import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js'
-
-        // Initialize the Typebot with your specific configuration
-        // Based on your link: https://typebot.panel.saidiautomation.com/typebots/cmkz5wst4000art4s8at5agte
-        Typebot.initPopup({
-            typebot: "cmkz5wst4000art4s8at5agte",
-            apiHost: "https://typebot.panel.saidiautomation.com",
-        });
-
-        // Global function to trigger the popup
-        window.openTypebot = () => {
-            if (typeof Typebot !== 'undefined') {
-                Typebot.open();
-            } else {
-                console.error("Typebot script not yet loaded");
+            .stats-grid {
+                gap: 30px;
             }
         }
-    </script>
 
-    <!-- Chatwoot Arabic Configuration and SDK -->
-    <script>
-      window.chatwootSettings = {
-        locale: "ar",
-        type: "standard"
-      };
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
 
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #FF6D5A;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #EA4B71;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+ </head>
+ <body><!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50" style="background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+   <div class="max-width-container flex justify-between items-center px-4 py-4">
+    <div class="flex items-center gap-3"><img src="https://raw.githubusercontent.com/hafsa-uae/demo2026/9eaa75412a3ebf51a4de39ed71ceb0350c07129d/logo.png" alt="SIS Logo" class="w-12 h-12 rounded-lg" loading="lazy" onerror="this.style.background='#FF6D5A'; this.alt='Logo';"> <span style="font-weight: 700; color: #1a1a1a; font-size: 18px;">SIS</span>
+    </div>
+    <div class="hidden md:flex items-center gap-8"><a href="#services" style="color: #1a1a1a; text-decoration: none; font-weight: 500; transition: color 0.3s;">الخدمات</a> <a href="#about" style="color: #1a1a1a; text-decoration: none; font-weight: 500; transition: color 0.3s;">عن الشركة</a> <a href="#portfolio" style="color: #1a1a1a; text-decoration: none; font-weight: 500; transition: color 0.3s;">أعمالنا</a> <a href="#contact" style="color: #1a1a1a; text-decoration: none; font-weight: 500; transition: color 0.3s;">التواصل</a>
+    </div><button class="btn-primary">اطلب عرض سعر</button>
+   </div>
+  </nav><!-- Hero Section -->
+  <section class="hero-section pt-40 pb-20" style="margin-top: 60px;">
+   <div class="max-width-container hero-content px-4 text-center text-white">
+    <h1 class="animate-fade-in-up" style="font-size: 56px; font-weight: 800; margin-bottom: 20px; line-height: 1.2;">توقف عن العمل كآلة</h1>
+    <p class="animate-fade-in-up" style="font-size: 28px; font-weight: 600; margin-bottom: 30px; opacity: 0.95;">حرّر طموحك من قيود المهام اليدوية</p>
+    <p class="animate-fade-in-up" style="font-size: 18px; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; opacity: 0.9;">نحن هنا لنعيد صياغة طريقة عملك. نربط تطبيقاتك ببعضها البعض ونستخدم الذكاء الاصطناعي لنحول الفوضى إلى نظام متناغم يعمل بدقة متناهية.</p>
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; animation: fadeInUp 0.8s ease-out 0.3s both;"><button class="btn-primary" style="background: white; color: #FF6D5A; box-shadow: 0 10px 25px rgba(255,255,255,0.3);"> ابدأ الآن </button> <button class="btn-secondary" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white;"> تعرف على المزيد </button>
+    </div>
+   </div>
+  </section><!-- Services Section -->
+  <section id="services" class="section-padding" style="background: #ffffff;">
+   <div class="max-width-container">
+    <div style="text-align: center; margin-bottom: 60px;">
+     <h2 style="font-size: 48px; font-weight: 800; color: #1a1a1a; margin-bottom: 16px;">خدماتنا</h2>
+     <p style="font-size: 18px; color: #666; max-width: 500px; margin: 0 auto;">حلول متكاملة لتطوير أعمالك الرقمية وتحقيق أهدافك</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;"><!-- Service 1 -->
+     <div class="service-card">
+      <div class="icon-circle" style="background: linear-gradient(135deg, #FF6D5A 0%, #EA4B71 100%); color: white;"><i class="fas fa-cogs"></i>
+      </div>
+      <h3 style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin-bottom: 12px;">أتمتة العمليات</h3>
+      <p style="color: #666; font-size: 16px; line-height: 1.6;">أتمتة شاملة لعمليات شركتك لتحسين الكفاءة وتقليل الأخطاء بشكل كبير</p>
+     </div><!-- Service 2 -->
+     <div class="service-card">
+      <div class="icon-circle" style="background: linear-gradient(135deg, #9052DE 0%, #EA4B71 100%); color: white;"><i class="fas fa-chart-line"></i>
+      </div>
+      <h3 style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin-bottom: 12px;">تحليل البيانات</h3>
+      <p style="color: #666; font-size: 16px; line-height: 1.6;">استخ��اج الرؤى من بيانات شركتك لاتخاذ قرارات أفضل وأسرع</p>
+     </div><!-- Service 3 -->
+     <div class="service-card">
+      <div class="icon-circle" style="background: linear-gradient(135deg, #FF6D5A 0%, #9052DE 100%); color: white;"><i class="fas fa-shield-alt"></i>
+      </div>
+      <h3 style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin-bottom: 12px;">الأمان والحماية</h3>
+      <p style="color: #666; font-size: 16px; line-height: 1.6;">حماية بيانات شركتك بأعلى معايير الأمان العالمية</p>
+     </div>
+    </div>
+   </div>
+  </section><!-- About Section -->
+  <section id="about" class="section-padding" style="background: #f8f9fa;">
+   <div class="max-width-container">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+     <div>
+      <h2 style="font-size: 48px; font-weight: 800; color: #1a1a1a; margin-bottom: 24px;">عن Saidi Intelligent Systems</h2>
+      <p style="font-size: 18px; color: #666; line-height: 1.8; margin-bottom: 24px;">نحن فريق متخصص في تطوير حلول بالأتمتة الرقمية المبتكرة. منذ تأسيسنا، ساعدنا عشرات الشركات على تحسين أداءها وتحقيق أهدافها.</p>
+      <ul style="list-style: none; padding: 0;">
+       <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-size: 16px; color: #1a1a1a;"><i class="fas fa-check" style="color: #FF6D5A; font-size: 20px;"></i> تجربة تزيد عن 10 سنوات في المجال</li>
+       <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-size: 16px; color: #1a1a1a;"><i class="fas fa-check" style="color: #FF6D5A; font-size: 20px;"></i> فريق متخصص من الخبراء والمتخصصين</li>
+       <li style="display: flex; align-items: center; gap: 12px; font-size: 16px; color: #1a1a1a;"><i class="fas fa-check" style="color: #FF6D5A; font-size: 20px;"></i> دعم 24/7 متاح دائماً لعملائنا</li>
+      </ul>
+     </div>
+     <div>
+      <div class="stats-grid">
+       <div class="stat-item" style="text-align: center;">
+        <h3>50+</h3>
+        <p style="font-size: 16px; color: #666;">مشروع منجز</p>
+       </div>
+       <div class="stat-item" style="text-align: center;">
+        <h3>100%</h3>
+        <p style="font-size: 16px; color: #666;">رضا العملاء</p>
+       </div>
+       <div class="stat-item" style="text-align: center;">
+        <h3>30+</h3>
+        <p style="font-size: 16px; color: #666;">عميل نشط</p>
+       </div>
+       <div class="stat-item" style="text-align: center;">
+        <h3>24/7</h3>
+        <p style="font-size: 16px; color: #666;">الدعم الفني</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Portfolio Section -->
+  <section id="portfolio" class="section-padding" style="background: #ffffff;">
+   <div class="max-width-container">
+    <div style="text-align: center; margin-bottom: 60px;">
+     <h2 style="font-size: 48px; font-weight: 800; color: #1a1a1a; margin-bottom: 16px;">أعمالنا</h2>
+     <p style="font-size: 18px; color: #666;">بعض من المشاريع الناجحة التي أنجزناها لعملائنا</p>
+    </div>
+    <div class="portfolio-grid"><!-- Project 1 -->
+     <div class="portfolio-item" style="background: linear-gradient(135deg, rgba(255,109,90,0.3) 0%, rgba(234,75,113,0.3) 100%);">
+      <div style="margin-bottom: 40px;"><i class="fas fa-shopping-cart" style="font-size: 48px; opacity: 0.8; margin-bottom: 20px;"></i>
+      </div>
+      <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 12px;">منصة تجارة إلكترونية</h3>
+      <p style="font-size: 16px; opacity: 0.9;">أتمتة كاملة لعمليات المبيعات والمخزون والفواتير</p>
+     </div><!-- Project 2 -->
+     <div class="portfolio-item" style="background: linear-gradient(135deg, rgba(144,82,222,0.3) 0%, rgba(234,75,113,0.3) 100%);">
+      <div style="margin-bottom: 40px;"><i class="fas fa-users" style="font-size: 48px; opacity: 0.8; margin-bottom: 20px;"></i>
+      </div>
+      <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 12px;">نظام إدارة الموارد البشرية</h3>
+      <p style="font-size: 16px; opacity: 0.9;">تطبيق متكامل لإدارة الموظفين والرواتب والعقود</p>
+     </div><!-- Project 3 -->
+     <div class="portfolio-item" style="background: linear-gradient(135deg, rgba(255,109,90,0.3) 0%, rgba(144,82,222,0.3) 100%);">
+      <div style="margin-bottom: 40px;"><i class="fas fa-chart-pie" style="font-size: 48px; opacity: 0.8; margin-bottom: 20px;"></i>
+      </div>
+      <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 12px;">لوحة تحليل البيانات</h3>
+      <p style="font-size: 16px; opacity: 0.9;">نظام متقدم لتصور ومراقبة البيانات في الوقت الفعلي</p>
+     </div>
+    </div>
+   </div>
+  </section><!-- Contact Section -->
+  <section id="contact" class="section-padding" style="background: linear-gradient(135deg, #FF6D5A 0%, #EA4B71 50%, #9052DE 100%);">
+   <div class="max-width-container" style="max-width: 600px;">
+    <div style="text-align: center; margin-bottom: 40px; color: white;">
+     <h2 style="font-size: 48px; font-weight: 800; margin-bottom: 16px;">تواصل معنا</h2>
+     <p style="font-size: 18px; opacity: 0.95;">دعنا نساعدك في تطوير أعمالك الرقمية وتحقيق أ��دافك</p>
+    </div>
+    <form style="background: white; padding: 40px; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.2);">
+     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+      <div class="form-group"><input type="text" placeholder="اسمك الكامل" style="width: 100%; padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; font-family: 'Tajawal', sans-serif;">
+      </div>
+      <div class="form-group"><input type="email" placeholder="بريدك الإلكتروني" style="width: 100%; padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; font-family: 'Tajawal', sans-serif;">
+      </div>
+     </div>
+     <div class="form-group"><input type="text" placeholder="موضوع الرسالة" style="width: 100%; padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; font-family: 'Tajawal', sans-serif;">
+     </div>
+     <div class="form-group"><textarea placeholder="رسالتك..." rows="5" style="width: 100%; padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; font-family: 'Tajawal', sans-serif; resize: none;"></textarea>
+     </div><button type="submit" class="btn-primary" style="width: 100%; background: linear-gradient(135deg, #FF6D5A 0%, #EA4B71 100%); padding: 16px;"> إرسال الرسالة </button>
+    </form>
+   </div>
+  </section><!-- Footer -->
+  <footer>
+   <div class="max-width-container px-4">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
+     <div>
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;"><img src="https://raw.githubusercontent.com/hafsa-uae/demo2026/9eaa75412a3ebf51a4de39ed71ceb0350c07129d/logo.png" alt="SIS Logo" class="w-10 h-10 rounded-lg" loading="lazy" onerror="this.style.background='#FF6D5A';"> <span style="font-size: 18px; font-weight: 700;">SIS</span>
+      </div>
+      <p style="color: #aaa; line-height: 1.6;">حلول أتمتة رقمية متقدمة لتطوير أعمالك وتحقيق أهدافك</p>
+     </div>
+     <div>
+      <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 20px;">الروابط السريعة</h4>
+      <ul style="list-style: none; padding: 0;">
+       <li style="margin-bottom: 12px;"><a href="#services" style="color: #aaa; text-decoration: none; transition: color 0.3s;">الخدمات</a></li>
+       <li style="margin-bottom: 12px;"><a href="#about" style="color: #aaa; text-decoration: none; transition: color 0.3s;">عن الشركة</a></li>
+       <li style="margin-bottom: 12px;"><a href="#portfolio" style="color: #aaa; text-decoration: none; transition: color 0.3s;">أعمالنا</a></li>
+      </ul>
+     </div>
+     <div>
+      <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 20px;">المساعدة والدعم</h4>
+      <ul style="list-style: none; padding: 0;">
+       <li style="margin-bottom: 12px;"><a href="#" style="color: #aaa; text-decoration: none;">الأسئلة الشائعة</a></li>
+       <li style="margin-bottom: 12px;"><a href="#" style="color: #aaa; text-decoration: none;">سياسة الخصوصية</a></li>
+       <li style="margin-bottom: 12px;"><a href="#" style="color: #aaa; text-decoration: none;">شروط الخدمة</a></li>
+      </ul>
+     </div>
+     <div>
+      <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 20px;">تابعنا على</h4>
+      <div style="display: flex; gap: 16px;"><a href="#" style="width: 44px; height: 44px; background: linear-gradient(135deg, #FF6D5A 0%, #EA4B71 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 18px; transition: transform 0.3s;"> <i class="fab fa-facebook-f"></i> </a> <a href="#" style="width: 44px; height: 44px; background: linear-gradient(135deg, #9052DE 0%, #EA4B71 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 18px; transition: transform 0.3s;"> <i class="fab fa-twitter"></i> </a> <a href="#" style="width: 44px; height: 44px; background: linear-gradient(135deg, #FF6D5A 0%, #9052DE 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 18px; transition: transform 0.3s;"> <i class="fab fa-linkedin-in"></i> </a>
+      </div>
+     </div>
+    </div>
+    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; color: #aaa;">
+     <p>© 2024 Saidi Intelligent Systems. جميع الحقوق محفوظة.</p>
+    </div>
+   </div>
+  </footer><!-- Floating Contact Bar -->
+  <div class="floating-bar"><a href="https://wa.me/1234567890" class="contact-btn whatsapp-btn" target="_blank" rel="noopener noreferrer"> <i class="fab fa-whatsapp"></i>
+    <div class="tooltip">
+     WhatsApp
+    </div></a> <a href="https://t.me/yourhandle" class="contact-btn telegram-btn" target="_blank" rel="noopener noreferrer"> <i class="fab fa-telegram-plane"></i>
+    <div class="tooltip">
+     Telegram
+    </div></a> <a href="mailto:info@saidiautomation.com" class="contact-btn email-btn"> <i class="fas fa-envelope"></i>
+    <div class="tooltip">
+     البريد الإلكتروني
+    </div></a> <a href="#" class="contact-btn chatwoot-btn"> <i class="fas fa-comment-dots"></i>
+    <div class="tooltip">
+     دردشة مباشرة
+    </div></a>
+  </div>
+  <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Add navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 0) {
+                nav.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            }
+        });
+
+        // Add hover effect to navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.color = '#FF6D5A';
+            });
+            link.addEventListener('mouseleave', function() {
+                this.style.color = '#1a1a1a';
+            });
+        });
+    </script><!-- Chatwoot Chat Widget -->
+  <script>
+      window.chatwootSettings = {"position":"right","type":"standard","launcherTitle":"Chat with us"};
       (function(d,t) {
         var BASE_URL="https://chatwoot.panel.saidiautomation.com";
         var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
         g.src=BASE_URL+"/packs/js/sdk.js";
-        g.defer = true;
         g.async = true;
         s.parentNode.insertBefore(g,s);
         g.onload=function(){
@@ -476,42 +608,6 @@
           })
         }
       })(document,"script");
-
-      function toggleChat() {
-          if (window.$chatwoot) {
-              window.$chatwoot.toggle();
-          }
-      }
     </script>
-
-    <!-- UI Interaction Scripts -->
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            this.style.display = 'none';
-            document.getElementById('messageBox').classList.remove('hidden');
-        });
-
-        const reveal = () => {
-            const elements = document.querySelectorAll('.glass-card');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 50) {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }
-            });
-        };
-
-        window.addEventListener('scroll', reveal);
-        window.addEventListener('load', () => {
-            document.querySelectorAll('.glass-card').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
-            });
-            reveal();
-        });
-    </script>
-</body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c782cf29377e280',t:'MTc3MDAxOTQ0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
