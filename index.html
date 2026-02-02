@@ -23,8 +23,8 @@
                 extend: {
                     colors: {
                         n8n: {
-                            orange: '#FF6D5A',
-                            red: '#EA4B71',
+                            green: '#10b981', // Emerald 500
+                            emerald: '#059669', // Emerald 600
                             purple: '#9052DE',
                             dark: '#0f1016',
                             card: '#181920'
@@ -89,23 +89,23 @@
         .glass-card:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 109, 90, 0.3);
+            border-color: rgba(16, 185, 129, 0.3);
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
         }
 
         .glow-button {
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(255, 109, 90, 0.2);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
         }
         
         .glow-button:hover {
-            box-shadow: 0 0 25px rgba(255, 109, 90, 0.5);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
             transform: translateY(-2px);
         }
 
         .logo-img {
             max-height: 40px;
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+            filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.2));
         }
 
         .reveal-on-scroll {
@@ -136,7 +136,7 @@
         }
 
         .image-glow {
-            box-shadow: 0 0 60px -15px rgba(255, 109, 90, 0.3);
+            box-shadow: 0 0 60px -15px rgba(16, 185, 129, 0.3);
         }
     </style>
 </head>
@@ -156,13 +156,13 @@
             </div>
             
             <div class="hidden md:flex space-x-reverse space-x-8">
-                <a href="#" class="text-zinc-300 hover:text-n8n-orange transition font-medium text-sm">الرئيسية</a>
-                <a href="#services" class="text-zinc-300 hover:text-n8n-orange transition font-medium text-sm">خدماتنا</a>
-                <a href="#pricing" class="text-zinc-300 hover:text-n8n-orange transition font-medium text-sm">الأسعار</a>
-                <a href="#contact" class="text-zinc-300 hover:text-n8n-orange transition font-medium text-sm">تواصل معنا</a>
+                <a href="#" class="text-zinc-300 hover:text-n8n-green transition font-medium text-sm">الرئيسية</a>
+                <a href="#services" class="text-zinc-300 hover:text-n8n-green transition font-medium text-sm">خدماتنا</a>
+                <a href="#pricing" class="text-zinc-300 hover:text-n8n-green transition font-medium text-sm">الأسعار</a>
+                <a href="#contact" class="text-zinc-300 hover:text-n8n-green transition font-medium text-sm">تواصل معنا</a>
             </div>
 
-            <button class="bg-gradient-to-r from-n8n-orange to-n8n-red text-white px-6 py-2.5 rounded-lg text-sm font-bold transition glow-button hover:scale-105">
+            <button class="bg-gradient-to-r from-n8n-green to-n8n-emerald text-white px-6 py-2.5 rounded-lg text-sm font-bold transition glow-button hover:scale-105">
                 ابدأ رحلتك
             </button>
         </div>
@@ -177,12 +177,12 @@
                 
                 <!-- Text Content -->
                 <div class="text-center lg:text-right order-2 lg:order-1">
-                    <div class="inline-block mb-6 px-4 py-1.5 rounded-full border border-n8n-orange/30 bg-n8n-orange/10 text-n8n-orange text-sm font-bold backdrop-blur-sm">
+                    <div class="inline-block mb-6 px-4 py-1.5 rounded-full border border-n8n-green/30 bg-n8n-green/10 text-n8n-green text-sm font-bold backdrop-blur-sm">
                         <i class="fa-solid fa-robot ml-2"></i> مستقبل الأعمال مع الوكلاء الأذكياء
                     </div>
                     <h1 class="text-4xl lg:text-6xl font-extrabold mb-6 leading-tight text-white">
                         وظّف ذكاءً <br>
-                        <span class="bg-gradient-to-r from-n8n-orange via-n8n-red to-n8n-purple bg-clip-text text-transparent">
+                        <span class="bg-gradient-to-r from-n8n-green via-emerald-400 to-n8n-purple bg-clip-text text-transparent">
                             لا ينام ولا يخطئ
                         </span>
                     </h1>
@@ -190,7 +190,7 @@
                         نقوم بتصميم وبناء وكلاء ذكاء اصطناعي (AI Agents) مخصصين لعملك، يقومون بإدارة المهام، التواصل مع العملاء، وأتمتة سير العمل بالكامل بينما تركز أنت على النمو.
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                        <button class="bg-n8n-orange hover:bg-n8n-red text-white px-8 py-4 rounded-xl text-lg font-bold transition glow-button flex items-center justify-center gap-2 group">
+                        <button class="bg-n8n-green hover:bg-n8n-emerald text-white px-8 py-4 rounded-xl text-lg font-bold transition glow-button flex items-center justify-center gap-2 group">
                             <span>احصل على استشارة مجانية</span>
                             <i class="fa-solid fa-arrow-left group-hover:translate-x-1 transition-transform"></i>
                         </button>
@@ -231,7 +231,7 @@
 
                     <!-- Decorative Background Elements -->
                     <div class="absolute -top-10 -left-10 w-40 h-40 bg-n8n-purple/20 rounded-full blur-[80px] -z-10 animate-pulse"></div>
-                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-n8n-orange/20 rounded-full blur-[80px] -z-10 animate-pulse" style="animation-delay: 2s"></div>
+                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-n8n-green/20 rounded-full blur-[80px] -z-10 animate-pulse" style="animation-delay: 2s"></div>
                 </div>
             </div>
         </div>
@@ -245,16 +245,16 @@
         <div class="marquee-container opacity-40 hover:opacity-100 transition-opacity duration-700">
             <div class="marquee-content text-2xl text-zinc-400 font-bold flex gap-20 px-4">
                 <span class="flex items-center gap-3"><i class="fab fa-google"></i> Google Cloud</span>
-                <span class="flex items-center gap-3"><i class="fa-solid fa-bolt text-n8n-orange"></i> n8n.io</span>
+                <span class="flex items-center gap-3"><i class="fa-solid fa-bolt text-n8n-green"></i> n8n.io</span>
                 <span class="flex items-center gap-3"><i class="fab fa-slack"></i> Slack HQ</span>
                 <span class="flex items-center gap-3"><i class="fas fa-brain text-n8n-purple"></i> ChatGPT-4o</span>
-                <span class="flex items-center gap-3"><i class="fab fa-hubspot text-orange-400"></i> HubSpot</span>
+                <span class="flex items-center gap-3"><i class="fab fa-hubspot text-n8n-green"></i> HubSpot</span>
                 <span class="flex items-center gap-3"><i class="fab fa-shopify text-green-500"></i> Shopify</span>
                 <span class="flex items-center gap-3"><i class="fab fa-whatsapp text-emerald-500"></i> WhatsApp Business</span>
                 <span class="flex items-center gap-3"><i class="fas fa-database"></i> SQL / NoSQL</span>
                 <!-- Duplicate for seamless loop -->
                 <span class="flex items-center gap-3"><i class="fab fa-google"></i> Google Cloud</span>
-                <span class="flex items-center gap-3"><i class="fa-solid fa-bolt text-n8n-orange"></i> n8n.io</span>
+                <span class="flex items-center gap-3"><i class="fa-solid fa-bolt text-n8n-green"></i> n8n.io</span>
             </div>
         </div>
     </section>
@@ -267,9 +267,9 @@
             <p class="text-zinc-500 text-sm mb-8">تمكين الشركات من خلال الذكاء الاصطناعي والأتمتة الذكية.</p>
             
             <div class="flex gap-6 mb-12">
-                <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-n8n-orange transition"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-n8n-orange transition"><i class="fab fa-x-twitter"></i></a>
-                <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-n8n-orange transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-n8n-green transition"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-n8n-green transition"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-n8n-green transition"><i class="fab fa-instagram"></i></a>
             </div>
 
             <p class="text-zinc-600 text-[10px] uppercase tracking-widest">© 2026 SIS - Saidi Intelligent Systems. جميع الحقوق محفوظة.</p>
