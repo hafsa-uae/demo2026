@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Added Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -60,7 +63,6 @@
         .glow-button {
             transition: all 0.3s ease;
             box-shadow: 0 0 15px rgba(255, 109, 90, 0.3);
-            cursor: pointer;
         }
         
         .glow-button:hover {
@@ -82,24 +84,75 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #FF6D5A; }
 
+        /* Added Floating Bar Styles */
+        .floating-bar {
+            position: fixed;
+            left: 20px; /* Positioned on left because page is RTL */
+            bottom: 50%;
+            transform: translateY(50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .contact-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-btn .tooltip {
+            position: absolute;
+            left: 60px;
+            background: #181920;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s;
+            pointer-events: none;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .contact-btn:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .whatsapp { background-color: #25D366; }
+        .telegram { background-color: #0088cc; }
+        .chatwoot { background-color: #FF6D5A; }
+
         /* Hide Chatwoot Branding */
-        .woot-widget-bubble-brand {
+        .woot-widget-bubble-brand,
+        [class*="woot-widget-bubble--brand"], 
+        .woot-widget-bubble--brand,
+        a[href*="chatwoot.com"] {
             display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
         }
     </style>
-    <style>
-      /* This targets the specific branding link in the Arabic interface */
-      [class*="woot-widget-bubble--brand"], 
-      .woot-widget-bubble--brand,
-      a[href*="chatwoot.com"] {
-        display: none !important;
-        visibility: hidden !important;
-        height: 0 !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-      }
-    </style>
-    
 </head>
 <body class="relative">
 
@@ -109,7 +162,7 @@
             <div class="flex items-center gap-3">
                 <img src="logo.png" alt="SIS Logo" class="h-10 w-10 object-contain logo-shadow" onerror="this.src='https://via.placeholder.com/40x40/FF6D5A/FFFFFF?text=SIS'">
                 <div class="flex flex-col leading-tight hidden sm:block">
-                  <span class="text-[16px] font-bold text-white tracking-tight">SIS - Saidi Intelligent Systems</span>       
+                    <span class="text-[16px] font-bold text-white tracking-tight">SIS - Saidi Intelligent Systems</span>
                 </div>
             </div>
             
@@ -121,8 +174,7 @@
                 <a href="#contact" class="text-zinc-300 hover:text-n8n-orange transition font-medium">تواصل معنا</a>
             </div>
 
-            <!-- Modified Button: Triggers Typebot -->
-            <a href="javascript:void(0)" onclick="Typebot.open()" class="bg-gradient-to-r from-n8n-orange to-n8n-red text-white px-6 py-2 rounded-lg text-sm font-bold transition glow-button">
+            <a href="#contact" class="bg-gradient-to-r from-n8n-orange to-n8n-red text-white px-6 py-2 rounded-lg text-sm font-bold transition glow-button">
                 ابدأ رحلتك
             </a>
         </div>
@@ -137,7 +189,7 @@
 
         <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
             <div class="inline-block mb-6 px-4 py-1 rounded-full border border-n8n-orange/30 bg-n8n-orange/10 text-n8n-orange text-sm font-medium">
-                ✨ الجيل الجديد من الأتمتة والذكاء الاصطناعي
+                ✨الجيل الجديد من الأتمتة والذكاء الاصطناعي
             </div>
             <h1 class="text-4xl md:text-6xl font-bold mb-8 leading-tight text-white">
                 توقف عن العمل كآلة.. <br>
@@ -150,8 +202,7 @@
                 نحن هنا لنعيد صياغة طريقة عملك. نربط تطبيقاتك ببعضها البعض ونستخدم الذكاء الاصطناعي لنحول الفوضى إلى نظام متناغم يعمل بدقة متناهية.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <!-- Modified Button: Triggers Typebot -->
-                <a href="javascript:void(0)" onclick="Typebot.open()" class="bg-n8n-orange hover:bg-n8n-red text-white px-8 py-4 rounded-xl text-lg font-bold transition glow-button">
+                <a href="#contact" class="bg-n8n-orange hover:bg-n8n-red text-white px-8 py-4 rounded-xl text-lg font-bold transition glow-button">
                     احصل على استشارة مجانية
                 </a>
                 <a href="#services" class="border border-zinc-700 hover:bg-white/5 text-white px-8 py-4 rounded-xl text-lg font-bold transition">
@@ -234,7 +285,7 @@
                     <a href="#contact" class="w-full text-center py-3 rounded-xl border border-zinc-700 text-white hover:bg-white/5 transition font-bold">ابدأ الآن</a>
                 </div>
 
-                <!-- Pro Plan (Highlighted) -->
+                <!-- Pro Plan -->
                 <div class="glass-card p-8 rounded-3xl border-n8n-orange/50 relative overflow-hidden flex flex-col scale-105 z-20 bg-n8n-dark">
                     <div class="absolute top-0 right-0 bg-n8n-orange text-white px-4 py-1 text-xs font-bold rounded-bl-xl">الأكثر طلباً</div>
                     <h3 class="text-xl font-bold text-white mb-2">احتراف الأتمتة</h3>
@@ -361,15 +412,34 @@
         </div>
     </footer>
 
+    <!-- Integrated Vertical Floating Bar -->
+    <div class="floating-bar">
+        <!-- WhatsApp -->
+        <a href="https://wa.me/1234567890" target="_blank" class="contact-btn whatsapp">
+            <i class="fab fa-whatsapp"></i>
+            <span class="tooltip">WhatsApp</span>
+        </a>
+
+        <!-- Telegram -->
+        <a href="https://t.me/yourusername" target="_blank" class="contact-btn telegram">
+            <i class="fab fa-telegram-plane"></i>
+            <span class="tooltip">Telegram</span>
+        </a>
+
+        <!-- Chatwoot (Simulated) -->
+        <div onclick="toggleChat()" class="contact-btn chatwoot" id="chat-trigger">
+            <i class="fas fa-comments"></i>
+            <span class="tooltip">Live Chat</span>
+        </div>
+    </div>
+
     <!-- Chatwoot Arabic Configuration and SDK -->
     <script>
-      // 1. Settings Configuration (Arabic & Standard Type)
       window.chatwootSettings = {
         locale: "ar",
         type: "standard"
       };
 
-      // 2. SDK Initialization
       (function(d,t) {
         var BASE_URL="https://chatwoot.panel.saidiautomation.com";
         var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
@@ -384,19 +454,13 @@
           })
         }
       })(document,"script");
-    </script>
-    
-    <!-- Typebot Initialization -->
-    <script type="module">
-        import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js'
-      
-        Typebot.initPopup({
-          apiHost: "https://typebot-viewer.panel.saidiautomation.com",
-          typebot: "lead-magnet-9lv82d7",
-        });
 
-        // Make Typebot accessible globally so the button onclick works
-        window.Typebot = Typebot;
+      // Function to toggle Chatwoot widget
+      function toggleChat() {
+          if (window.$chatwoot) {
+              window.$chatwoot.toggle();
+          }
+      }
     </script>
 
     <!-- UI Interaction Scripts -->
@@ -407,7 +471,6 @@
             document.getElementById('messageBox').classList.remove('hidden');
         });
 
-        // Simplified Intersection Observer for Reveal Animations
         const reveal = () => {
             const elements = document.querySelectorAll('.glass-card');
             elements.forEach(el => {
