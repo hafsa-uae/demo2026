@@ -37,6 +37,7 @@
                         'float': 'float 6s ease-in-out infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'glow': 'glow 3s ease-in-out infinite',
+                        'fade-up': 'fadeUp 0.5s ease-out forwards',
                     },
                     keyframes: {
                         float: {
@@ -46,6 +47,10 @@
                         glow: {
                             '0%, 100%': { opacity: 0.3, filter: 'blur(20px)' },
                             '50%': { opacity: 0.6, filter: 'blur(40px)' },
+                        },
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
                 }
@@ -138,6 +143,15 @@
         .image-glow {
             box-shadow: 0 0 60px -15px rgba(16, 185, 129, 0.3);
         }
+
+        /* Hide scrollbar for tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 <body class="relative">
@@ -149,7 +163,7 @@
                 <a href="#" class="flex items-center gap-3">
                     <img src="https://raw.githubusercontent.com/hafsa-uae/demo2026/main/logo.png" alt="SIS Logo" class="logo-img">
                     <div class="flex flex-col leading-tight hidden sm:block">
-                        <span class="text-[14px] font-bold text-white tracking-tight">SIS</span>
+                        <span class="text-[14px] font-bold text-white tracking-tight">SIS AI</span>
                         <span class="text-[10px] text-zinc-500 font-medium">Saidi Intelligent Systems</span>
                     </div>
                 </a>
@@ -382,7 +396,7 @@
         </div>
     </section>
 
-    <!-- NEW SECTION: REAL RESULTS (نتائج حقيقية) -->
+    <!-- REAL RESULTS (نتائج حقيقية) -->
     <section class="py-24 relative overflow-hidden bg-[#0f1016]">
         <!-- Background Glow -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-n8n-purple/10 rounded-full blur-[100px] -z-10"></div>
@@ -441,6 +455,181 @@
         </div>
     </section>
 
+    <!-- NEW SECTION: AI ACCELERATES YOUR BUSINESS (Tabs) -->
+    <section class="py-24 relative overflow-hidden bg-[#0c0d12]">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                    ذكاء اصطناعي يسرّع عملك
+                </h2>
+                <p class="text-xl text-zinc-400 max-w-2xl mx-auto">
+                    الوكلاء الرقميون لأتمتة العمل وتحقيق الأداء الأمثل
+                </p>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="flex flex-nowrap md:flex-wrap overflow-x-auto no-scrollbar justify-start md:justify-center gap-4 mb-12 pb-4" id="tabs-container">
+                <button class="tab-btn px-6 py-3 rounded-full bg-n8n-green text-white border border-n8n-green shadow-[0_0_15px_rgba(16,185,129,0.4)] whitespace-nowrap transition-all duration-300 font-bold text-sm flex items-center gap-2 group" data-target="tab-support">
+                    <i class="fa-solid fa-headset"></i> دعم العملاء
+                </button>
+                <button class="tab-btn px-6 py-3 rounded-full bg-zinc-800 text-zinc-400 border border-zinc-700 hover:text-white whitespace-nowrap transition-all duration-300 font-bold text-sm flex items-center gap-2 group" data-target="tab-supply">
+                    <i class="fa-solid fa-truck-fast"></i> سلسلة الإمداد
+                </button>
+                <button class="tab-btn px-6 py-3 rounded-full bg-zinc-800 text-zinc-400 border border-zinc-700 hover:text-white whitespace-nowrap transition-all duration-300 font-bold text-sm flex items-center gap-2 group" data-target="tab-finance">
+                    <i class="fa-solid fa-chart-line"></i> الخدمات المالية
+                </button>
+                <button class="tab-btn px-6 py-3 rounded-full bg-zinc-800 text-zinc-400 border border-zinc-700 hover:text-white whitespace-nowrap transition-all duration-300 font-bold text-sm flex items-center gap-2 group" data-target="tab-risk">
+                    <i class="fa-solid fa-shield-halved"></i> إدارة المخاطر
+                </button>
+                <button class="tab-btn px-6 py-3 rounded-full bg-zinc-800 text-zinc-400 border border-zinc-700 hover:text-white whitespace-nowrap transition-all duration-300 font-bold text-sm flex items-center gap-2 group" data-target="tab-security">
+                    <i class="fa-solid fa-lock"></i> أمن العمليات
+                </button>
+                <button class="tab-btn px-6 py-3 rounded-full bg-zinc-800 text-zinc-400 border border-zinc-700 hover:text-white whitespace-nowrap transition-all duration-300 font-bold text-sm flex items-center gap-2 group" data-target="tab-it">
+                    <i class="fa-solid fa-server"></i> عمليات وتقنية المعلومات
+                </button>
+            </div>
+
+            <!-- Tab Content Area -->
+            <div class="glass-card p-8 md:p-12 rounded-3xl min-h-[300px] relative overflow-hidden">
+                <!-- Decorative background elements inside card -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-n8n-green/5 rounded-full blur-[80px] -z-10"></div>
+                
+                <!-- Tab 1: Customer Support -->
+                <div id="tab-support" class="tab-pane animate-fade-up">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="flex-1 text-right">
+                            <h3 class="text-3xl font-bold text-white mb-4">دعم العملاء الذكي</h3>
+                            <p class="text-zinc-400 leading-relaxed mb-6">
+                                أتمتة الردود على استفسارات العملاء على مدار الساعة، وتحليل المشاعر لتحسين التجربة، وتوجيه التذاكر المعقدة للموظفين المختصين بذكاء.
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center gap-3 text-sm text-zinc-300"><i class="fa-solid fa-check text-n8n-green"></i> <span>رد فوري 24/7 دون انتظار</span></li>
+                                <li class="flex items-center gap-3 text-sm text-zinc-300"><i class="fa-solid fa-check text-n8n-green"></i> <span>تكامل مع WhatsApp و Email</span></li>
+                                <li class="flex items-center gap-3 text-sm text-zinc-300"><i class="fa-solid fa-check text-n8n-green"></i> <span>تقليل تكاليف التشغيل بنسبة 40%</span></li>
+                            </ul>
+                            <a href="#" class="text-n8n-green font-bold text-sm hover:text-n8n-emerald transition flex items-center gap-2">
+                                اكتشف المزيد <i class="fa-solid fa-arrow-left"></i>
+                            </a>
+                        </div>
+                        <div class="flex-1 w-full relative">
+                            <div class="bg-zinc-900/50 rounded-xl p-6 border border-white/5 backdrop-blur-sm">
+                                <div class="flex items-center gap-4 mb-4 border-b border-white/5 pb-4">
+                                    <div class="w-10 h-10 rounded-full bg-n8n-green/20 flex items-center justify-center text-n8n-green"><i class="fa-solid fa-robot"></i></div>
+                                    <div>
+                                        <div class="text-white font-bold text-sm">وكيل الدعم</div>
+                                        <div class="text-zinc-500 text-xs">متصل الآن</div>
+                                    </div>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="bg-white/5 p-3 rounded-lg rounded-tr-none text-xs text-zinc-300 w-3/4 mr-auto">مرحباً، كيف يمكنني مساعدتك اليوم في طلبك؟</div>
+                                    <div class="bg-n8n-green/20 p-3 rounded-lg rounded-tl-none text-xs text-white w-3/4 ml-auto border border-n8n-green/30">أريد تتبع شحنتي رقم #TRK9920</div>
+                                    <div class="bg-white/5 p-3 rounded-lg rounded-tr-none text-xs text-zinc-300 w-3/4 mr-auto">الشحنة #TRK9920 في طريقها إليك، ومن المتوقع وصولها غداً مساءً.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Supply Chain -->
+                <div id="tab-supply" class="tab-pane hidden animate-fade-up">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="flex-1 text-right">
+                            <h3 class="text-3xl font-bold text-white mb-4">أتمتة سلسلة الإمداد</h3>
+                            <p class="text-zinc-400 leading-relaxed mb-6">
+                                تحسين إدارة المخزون، والتنبؤ بالطلب بدقة عالية، وأتمتة أوامر الشراء بناءً على التحليلات التنبؤية لضمان استمرارية الأعمال.
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center gap-3 text-sm text-zinc-300"><i class="fa-solid fa-check text-n8n-green"></i> <span>تنبؤ دقيق بالطلب والمخزون</span></li>
+                                <li class="flex items-center gap-3 text-sm text-zinc-300"><i class="fa-solid fa-check text-n8n-green"></i> <span>تتبع الشحنات واللوجستيات لحظياً</span></li>
+                            </ul>
+                        </div>
+                        <div class="flex-1 flex justify-center items-center">
+                             <i class="fa-solid fa-boxes-stacked text-9xl text-n8n-green/20"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Finance -->
+                <div id="tab-finance" class="tab-pane hidden animate-fade-up">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="flex-1 text-right">
+                            <h3 class="text-3xl font-bold text-white mb-4">الذكاء المالي والمحاسبي</h3>
+                            <p class="text-zinc-400 leading-relaxed mb-6">
+                                أتمتة معالجة الفواتير، ومطابقة المدفوعات، وإعداد التقارير المالية، واكتشاف الاحتيال في المعاملات بشكل فوري.
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center gap-3 text-sm text-zinc-300"><i class="fa-solid fa-check text-n8n-green"></i> <span>أتمتة الفواتير والمطالبات</span></li>
+                                <li class="flex items-center gap-3 text-sm text-zinc-300"><i class="fa-solid fa-check text-n8n-green"></i> <span>تحليل البيانات المالية بدقة</span></li>
+                            </ul>
+                        </div>
+                         <div class="flex-1 flex justify-center items-center">
+                             <i class="fa-solid fa-sack-dollar text-9xl text-n8n-purple/20"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 4: Risk Management -->
+                <div id="tab-risk" class="tab-pane hidden animate-fade-up">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="flex-1 text-right">
+                            <h3 class="text-3xl font-bold text-white mb-4">إدارة المخاطر والامتثال</h3>
+                            <p class="text-zinc-400 leading-relaxed mb-6">
+                                مراقبة الامتثال للقوانين واللوائح بشكل آلي، وتحليل المخاطر التشغيلية، وتقديم تنبيهات استباقية لتجنب الخسائر.
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center gap-3 text-sm text-zinc-300"><i class="fa-solid fa-check text-n8n-green"></i> <span>مراقبة الامتثال التنظيمي</span></li>
+                                <li class="flex items-center gap-3 text-sm text-zinc-300"><i class="fa-solid fa-check text-n8n-green"></i> <span>تحليل وتقييم المخاطر</span></li>
+                            </ul>
+                        </div>
+                        <div class="flex-1 flex justify-center items-center">
+                             <i class="fa-solid fa-file-shield text-9xl text-blue-500/20"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 5: Security Ops -->
+                <div id="tab-security" class="tab-pane hidden animate-fade-up">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="flex-1 text-right">
+                            <h3 class="text-3xl font-bold text-white mb-4">أمن العمليات الذكي</h3>
+                            <p class="text-zinc-400 leading-relaxed mb-6">
+                                اكتشاف التهديدات السيبرانية والاستجابة لها تلقائياً، ومراقبة الوصول والأنظمة، وضمان حماية البيانات الحساسة.
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center gap-3 text-sm text-zinc-300"><i class="fa-solid fa-check text-n8n-green"></i> <span>كشف التهديدات السيبرانية</span></li>
+                                <li class="flex items-center gap-3 text-sm text-zinc-300"><i class="fa-solid fa-check text-n8n-green"></i> <span>استجابة تلقائية للحوادث</span></li>
+                            </ul>
+                        </div>
+                        <div class="flex-1 flex justify-center items-center">
+                             <i class="fa-solid fa-user-secret text-9xl text-red-500/20"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 6: IT Ops -->
+                <div id="tab-it" class="tab-pane hidden animate-fade-up">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="flex-1 text-right">
+                            <h3 class="text-3xl font-bold text-white mb-4">عمليات وتقنية المعلومات (AIOps)</h3>
+                            <p class="text-zinc-400 leading-relaxed mb-6">
+                                أتمتة إدارة البنية التحتية، ومراقبة الأداء، وحل المشكلات التقنية الروتينية لتقليل وقت التوقف عن العمل.
+                            </p>
+                             <ul class="space-y-3 mb-8">
+                                <li class="flex items-center gap-3 text-sm text-zinc-300"><i class="fa-solid fa-check text-n8n-green"></i> <span>مراقبة البنية التحتية</span></li>
+                                <li class="flex items-center gap-3 text-sm text-zinc-300"><i class="fa-solid fa-check text-n8n-green"></i> <span>أتمتة الدعم الفني</span></li>
+                            </ul>
+                        </div>
+                        <div class="flex-1 flex justify-center items-center">
+                             <i class="fa-solid fa-microchip text-9xl text-cyan-500/20"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="py-20 border-t border-white/5 text-center relative z-10 bg-[#0f1016]">
         <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
@@ -469,6 +658,38 @@
                 nav.classList.remove('py-2', 'bg-[#0f1016]');
                 nav.classList.add('py-4', 'bg-[#0f1016]/80');
             }
+        });
+
+        // Tabs Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const contents = document.querySelectorAll('.tab-pane');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Reset all tabs styles
+                    tabs.forEach(t => {
+                        t.classList.remove('bg-n8n-green', 'text-white', 'border-n8n-green', 'shadow-[0_0_15px_rgba(16,185,129,0.4)]');
+                        t.classList.add('bg-zinc-800', 'text-zinc-400', 'border-zinc-700');
+                    });
+
+                    // Activate clicked tab
+                    tab.classList.remove('bg-zinc-800', 'text-zinc-400', 'border-zinc-700');
+                    tab.classList.add('bg-n8n-green', 'text-white', 'border-n8n-green', 'shadow-[0_0_15px_rgba(16,185,129,0.4)]');
+
+                    // Hide all contents
+                    contents.forEach(content => {
+                        content.classList.add('hidden');
+                    });
+
+                    // Show target content
+                    const targetId = tab.getAttribute('data-target');
+                    const targetContent = document.getElementById(targetId);
+                    if(targetContent) {
+                        targetContent.classList.remove('hidden');
+                    }
+                });
+            });
         });
     </script>
 </body>
