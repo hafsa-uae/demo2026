@@ -11,7 +11,7 @@
     <!-- Fonts: Tajawal -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -155,17 +155,69 @@
                 </a>
             </div>
             
-            <div class="hidden md:flex space-x-reverse space-x-8">
+            <div class="hidden md:flex space-x-reverse space-x-8 items-center">
                 <a href="#" class="text-zinc-300 hover:text-n8n-green transition font-medium text-sm">الرئيسية</a>
-                 <a href="#platform" class="text-zinc-300 hover:text-n8n-green transition font-medium text-sm">المنصة</a>
+                
+                <!-- START: DROPDOWN MENU -->
+                <div class="relative group h-full">
+                    <a href="#platform" class="text-zinc-300 group-hover:text-n8n-green transition font-medium text-sm flex items-center gap-1.5 py-2">
+                        <span>المنصة</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-300 group-hover:rotate-180 opacity-70"></i>
+                    </a>
+                    
+                    <!-- Dropdown Content -->
+                    <div class="absolute top-full right-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 w-64">
+                        <div class="bg-[#181920] border border-white/10 rounded-xl shadow-2xl overflow-hidden backdrop-blur-xl ring-1 ring-white/5">
+                            
+                            <!-- Menu Item 1 -->
+                            <a href="#" class="block px-5 py-3 border-b border-white/5 hover:bg-white/5 transition-colors group/item">
+                                <div class="text-zinc-200 text-sm font-bold group-hover/item:text-n8n-green transition-colors">التنسيق الوكيلي</div>
+                                <div class="text-[11px] text-zinc-500 font-medium tracking-wide">Agentic Orchestration</div>
+                            </a>
+
+                            <!-- Menu Item 2 -->
+                            <a href="#" class="block px-5 py-3 border-b border-white/5 hover:bg-white/5 transition-colors group/item">
+                                <div class="text-zinc-200 text-sm font-bold group-hover/item:text-n8n-green transition-colors">الأتمتة الوكيلية</div>
+                                <div class="text-[11px] text-zinc-500 font-medium tracking-wide">Agentic Automation</div>
+                            </a>
+
+                            <!-- Menu Item 3 -->
+                            <a href="#" class="block px-5 py-3 border-b border-white/5 hover:bg-white/5 transition-colors group/item">
+                                <div class="text-zinc-200 text-sm font-bold group-hover/item:text-n8n-green transition-colors">التحليلات الوكيلية</div>
+                                <div class="text-[11px] text-zinc-500 font-medium tracking-wide">Agentic Analytics</div>
+                            </a>
+
+                            <!-- Menu Item 4 -->
+                            <a href="#" class="block px-5 py-3 border-b border-white/5 hover:bg-white/5 transition-colors group/item">
+                                <div class="text-zinc-200 text-sm font-bold group-hover/item:text-n8n-green transition-colors">الذكاء الاصطناعي المسؤول</div>
+                                <div class="text-[11px] text-zinc-500 font-medium tracking-wide">Responsible AI</div>
+                            </a>
+
+                            <!-- Menu Item 5 -->
+                            <a href="#" class="block px-5 py-3 border-b border-white/5 hover:bg-white/5 transition-colors group/item">
+                                <div class="text-zinc-200 text-sm font-bold group-hover/item:text-n8n-green transition-colors">الأمن والنشر</div>
+                                <div class="text-[11px] text-zinc-500 font-medium tracking-wide">Security & Deployment</div>
+                            </a>
+
+                            <!-- Menu Item 6 -->
+                            <a href="#" class="block px-5 py-3 hover:bg-white/5 transition-colors group/item">
+                                <div class="text-zinc-200 text-sm font-bold group-hover/item:text-n8n-green transition-colors">إدارة الموجّهات</div>
+                                <div class="text-[11px] text-zinc-500 font-medium tracking-wide">Prompt Management</div>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- END: DROPDOWN MENU -->
+
                 <a href="#services" class="text-zinc-300 hover:text-n8n-green transition font-medium text-sm">خدماتنا</a>
                 <a href="#pricing" class="text-zinc-300 hover:text-n8n-green transition font-medium text-sm">الأسعار</a>
-                <a href="#resources" class="text-zinc-300 hover:text-n8n-green transition font-medium text-sm">االموارد</a>
+                <a href="#resources" class="text-zinc-300 hover:text-n8n-green transition font-medium text-sm">الموارد</a>
                 <a href="#contact" class="text-zinc-300 hover:text-n8n-green transition font-medium text-sm">تواصل معنا</a>
             </div>
 
-                      <button class="bg-gradient-to-r from-n8n-green to-n8n-emerald text-white px-6 py-2.5 rounded-lg text-sm font-bold transition glow-button hover:scale-105">
-               جرّب المنصة الآن
+            <button class="bg-gradient-to-r from-n8n-green to-n8n-emerald text-white px-6 py-2.5 rounded-lg text-sm font-bold transition glow-button hover:scale-105">
+                جرّب المنصة الآن
             </button>
         </div>
     </nav>
