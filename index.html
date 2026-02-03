@@ -715,6 +715,24 @@
   })(document,"script");
 </script>
 
+<script>
+window.addEventListener("chatwoot:ready", function() {
+  // Change status text
+  document.querySelectorAll(".cw-widget-availability-text").forEach(el => {
+    el.textContent = "نحن متواجدون الآن 💬"; // custom online text
+  });
+  // Change reply time text
+  document.querySelectorAll(".cw-widget-reply-time-text").forEach(el => {
+    el.textContent = "استكشف، تعلم، وابدأ الآن! 🌐"; // custom reply time
+  });
+  // Change continue conversation button text
+  document.querySelectorAll(".cw-widget-continue-btn").forEach(el => {
+    el.textContent = "ابدأ المحادثة ▶️"; // custom continue text
+  });
+});
+</script>
+
+    
    
 </body>
 </html>
