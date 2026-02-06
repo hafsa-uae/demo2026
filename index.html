@@ -152,11 +152,6 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-
-          /* Typebot Customization */
-        typebot-standard {
-            z-index: 9999;
-        }
     </style>
 </head>
 <body class="relative">
@@ -304,7 +299,7 @@
                 <a href="#contact" class="text-zinc-300 hover:text-n8n-green transition font-medium text-sm">تواصل معنا</a>
             </div>
 
-            <button onclick="Typebot.open()" class="bg-gradient-to-r from-n8n-green to-n8n-emerald text-white px-6 py-2.5 rounded-lg text-sm font-bold transition glow-button hover:scale-105">
+            <button class="bg-gradient-to-r from-n8n-green to-n8n-emerald text-white px-6 py-2.5 rounded-lg text-sm font-bold transition glow-button hover:scale-105">
                 جرّب المنصة الآن
             </button>
         </div>
@@ -332,7 +327,7 @@
                         نقوم بتصميم وبناء وكلاء ذكاء اصطناعي (AI Agents) مخصصين لعملك، يقومون بإدارة المهام، التواصل مع العملاء، وأتمتة سير العمل بالكامل بينما تركز أنت على النمو.
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                        <button onclick="Typebot.open()" class="bg-n8n-green hover:bg-n8n-emerald text-white px-8 py-4 rounded-xl text-lg font-bold transition glow-button flex items-center justify-center gap-2 group">
+                        <button class="bg-n8n-green hover:bg-n8n-emerald text-white px-8 py-4 rounded-xl text-lg font-bold transition glow-button flex items-center justify-center gap-2 group">
                             <span>احصل على استشارة مجانية</span>
                             <i class="fa-solid fa-arrow-left group-hover:translate-x-1 transition-transform"></i>
                         </button>
@@ -733,32 +728,7 @@ window.addEventListener("chatwoot:ready", function() {
 });
 </script>
 
-   <!-- TYPEBOT SCRIPT START -->
-    <script type="module">
-        import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js'
-      
-        Typebot.initBubble({
-          apiHost: "https://typebot.panel.saidiautomation.com",
-          typebot: "cml3flhsg000drt4sd9lv82d7", // Extracted ID from your URL
-          theme: {
-            button: {
-              backgroundColor: "#10b981", // Matches your n8n-green
-              customIconSrc: "https://raw.githubusercontent.com/hafsa-uae/demo2026/main/logo.png", // Optional: Uses your logo
-              size: "large",
-            },
-            previewMessage: {
-              backgroundColor: "#181920",
-              textColor: "#FFFFFF",
-              closeButtonBackgroundColor: "#10b981",
-              closeButtonIconColor: "#FFFFFF",
-            },
-          },
-        })
-
-        // Attach Typebot to window to allow button clicks to open it
-        window.Typebot = Typebot;
-      </script>
-      <!-- TYPEBOT SCRIPT END --> 
+    
    
 </body>
 </html>
