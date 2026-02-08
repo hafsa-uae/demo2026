@@ -152,6 +152,10 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+         /* Typebot Customization */
+        typebot-standard {
+            z-index: 9999;
+        }
     </style>
 </head>
 <body class="relative">
@@ -327,7 +331,7 @@
                         نقوم بتصميم وبناء وكلاء ذكاء اصطناعي (AI Agents) مخصصين لعملك، يقومون بإدارة المهام، التواصل مع العملاء، وأتمتة سير العمل بالكامل بينما تركز أنت على النمو.
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                        <button class="bg-n8n-green hover:bg-n8n-emerald text-white px-8 py-4 rounded-xl text-lg font-bold transition glow-button flex items-center justify-center gap-2 group">
+                        <button onclick="Typebot.open()"  class="bg-n8n-green hover:bg-n8n-emerald text-white px-8 py-4 rounded-xl text-lg font-bold transition glow-button flex items-center justify-center gap-2 group">
                             <span>احصل على استشارة مجانية</span>
                             <i class="fa-solid fa-arrow-left group-hover:translate-x-1 transition-transform"></i>
                         </button>
@@ -729,10 +733,17 @@ window.addEventListener("chatwoot:ready", function() {
 </script>
 
   <!-- TYPEBOT SCRIPT START -->
-   <iframe
-  src="https://typebot-viewer.panel.saidiautomation.com/lead-magnet-9lv82d7"
-  style="border: none; width: 100%; height: 600px"
-></iframe>
+ <script type="module">
+        import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3.4/dist/web.js'
+      
+        Typebot.initPopup({
+          typebot: "lead-magnet-9lv82d7",
+          apiHost: "https://typebot-viewer.panel.saidiautomation.com",
+        });
+
+        // Attach Typebot to window to allow button clicks to open it
+        window.Typebot = Typebot;
+      </script>
       <!-- TYPEBOT SCRIPT END -->    
    
 </body>
