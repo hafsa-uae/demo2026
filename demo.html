@@ -30,7 +30,7 @@
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            background: linear-gradient(135deg, #059669 0%, #0d9488 100%); /* Emerald to Teal */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -40,7 +40,8 @@
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-                 /* Typebot Customization */
+        
+        /* Typebot Customization */
         typebot-standard {
             z-index: 9999;
         }
@@ -53,13 +54,14 @@
     <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-blue-600/20">S</div>
-                <span class="font-bold text-2xl tracking-tight text-slate-800">SIS AI</span>
+                <!-- LOGO INSERTION -->
+                <img src="logo.jpg" alt="SIS AI Logo" class="h-12 w-auto object-contain rounded-lg">
+                <span class="font-bold text-2xl tracking-tight text-slate-900">SIS AI</span>
             </div>
             <div class="hidden md:flex gap-6 items-center">
-                <a href="https://www.saidiautomation.com" class="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">الرئيسية</a>
-                
-                <button onclick="Typebot.open()"   class="text-sm font-bold px-6 py-2.5 bg-slate-900 text-white rounded-full hover:bg-blue-700 transition-all shadow-md">ابدأ التحول الآن</button>
+                <a href="https://www.saidiautomation.com" class="text-sm font-bold text-slate-600 hover:text-emerald-600 transition-colors">الرئيسية</a>
+                <!-- Updated Button Color -->
+                <a href="SIS_Arabic_Demo.html" class="text-sm font-bold px-6 py-2.5 bg-slate-900 text-white rounded-full hover:bg-emerald-700 transition-all shadow-md inline-flex items-center justify-center">جرب المنصة الآن</a>
             </div>
         </div>
     </nav>
@@ -67,8 +69,9 @@
     <!-- Hero: Impact Summary -->
     <section class="pt-20 pb-16 px-6 relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl">
-            <div class="absolute top-20 right-10 w-64 h-64 bg-blue-200/30 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-10 left-10 w-80 h-80 bg-indigo-200/30 rounded-full blur-3xl"></div>
+            <!-- Updated Blob Colors -->
+            <div class="absolute top-20 right-10 w-64 h-64 bg-emerald-200/30 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 left-10 w-80 h-80 bg-teal-200/30 rounded-full blur-3xl"></div>
         </div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10 fade-in-up">
@@ -82,19 +85,19 @@
             <!-- Key Metrics Grid -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-100">
-                    <div class="text-4xl font-black text-blue-600 mb-2">95%</div>
+                    <div class="text-4xl font-black text-emerald-600 mb-2">95%</div>
                     <div class="text-sm font-bold text-slate-600">توفير في الوقت</div>
                 </div>
                 <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-100">
-                    <div class="text-4xl font-black text-indigo-600 mb-2">0%</div>
+                    <div class="text-4xl font-black text-teal-600 mb-2">0%</div>
                     <div class="text-sm font-bold text-slate-600">أخطاء بشرية</div>
                 </div>
                 <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-100">
-                    <div class="text-4xl font-black text-green-600 mb-2">3x</div>
+                    <div class="text-4xl font-black text-emerald-500 mb-2">3x</div>
                     <div class="text-sm font-bold text-slate-600">زيادة الإنتاجية</div>
                 </div>
                 <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-100">
-                    <div class="text-4xl font-black text-yellow-500 mb-2">24/7</div>
+                    <div class="text-4xl font-black text-slate-700 mb-2">24/7</div>
                     <div class="text-sm font-bold text-slate-600">عمل متواصل</div>
                 </div>
             </div>
@@ -110,7 +113,7 @@
                     <p class="text-slate-500">بيانات مجمعة من آخر 50 مشروع أتمتة ناجح</p>
                 </div>
                 <div class="flex items-center gap-2 text-sm text-slate-500 bg-slate-50 px-3 py-1 rounded-full border border-slate-200">
-                    <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
                     تحديث مباشر: فبراير 2026
                 </div>
             </div>
@@ -119,7 +122,7 @@
                 <!-- Chart 1: Time Savings -->
                 <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm">
                     <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
-                        <i data-lucide="clock" class="text-blue-500 w-5 h-5"></i>
+                        <i data-lucide="clock" class="text-emerald-500 w-5 h-5"></i>
                         ساعات العمل الشهرية (يدوي vs وكيل ذكي)
                     </h3>
                     <div class="relative h-64 w-full">
@@ -130,7 +133,7 @@
                 <!-- Chart 2: Cost Reduction -->
                 <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm">
                     <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
-                        <i data-lucide="trending-up" class="text-green-500 w-5 h-5"></i>
+                        <i data-lucide="trending-up" class="text-emerald-500 w-5 h-5"></i>
                         نمو العمليات مقابل التكلفة التشغيلية
                     </h3>
                     <div class="relative h-64 w-full">
@@ -144,26 +147,26 @@
     <!-- The Transformation Process -->
     <section class="py-20 bg-slate-900 text-white relative overflow-hidden">
         <!-- Abstract Background -->
-        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#4f46e5 1px, transparent 1px); background-size: 32px 32px;"></div>
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#10b981 1px, transparent 1px); background-size: 32px 32px;"></div>
         
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="text-center mb-16">
-                <span class="text-blue-400 font-bold tracking-wider text-sm uppercase">منهجية العمل</span>
+                <span class="text-emerald-400 font-bold tracking-wider text-sm uppercase">منهجية العمل</span>
                 <h2 class="text-3xl md:text-5xl font-bold mt-2">كيف نحول عملك إلى أتمتة؟</h2>
                 <p class="text-slate-400 mt-4 max-w-2xl mx-auto">عملية سلسة، شفافة، وبدون تعطيل لسير عملك الحالي.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 relative">
                 <!-- Connecting Line (Desktop) -->
-                <div class="hidden md:block absolute top-12 left-0 w-full h-1 bg-gradient-to-l from-slate-700 via-blue-900 to-slate-700 -z-10"></div>
+                <div class="hidden md:block absolute top-12 left-0 w-full h-1 bg-gradient-to-l from-slate-700 via-emerald-900 to-slate-700 -z-10"></div>
 
                 <!-- Step 1 -->
                 <div class="relative group">
-                    <div class="w-24 h-24 mx-auto bg-slate-800 rounded-2xl border-2 border-slate-700 flex items-center justify-center mb-6 group-hover:border-blue-500 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-all duration-300">
-                        <i data-lucide="video" class="w-10 h-10 text-blue-400"></i>
+                    <div class="w-24 h-24 mx-auto bg-slate-800 rounded-2xl border-2 border-slate-700 flex items-center justify-center mb-6 group-hover:border-emerald-500 group-hover:shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all duration-300">
+                        <i data-lucide="video" class="w-10 h-10 text-emerald-400"></i>
                     </div>
                     <div class="text-center">
-                        <div class="inline-block px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-xs font-bold mb-3">المرحلة الأولى</div>
+                        <div class="inline-block px-3 py-1 bg-emerald-900/50 text-emerald-300 rounded-full text-xs font-bold mb-3">المرحلة الأولى</div>
                         <h3 class="text-xl font-bold mb-2">التسجيل والتحليل</h3>
                         <p class="text-slate-400 text-sm leading-relaxed">نقوم بتسجيل الشاشة لعملياتك الحالية لفهم منطق العمل الدقيق (Keystroke Level Modeling) دون الحاجة لوثائق معقدة.</p>
                     </div>
@@ -171,11 +174,11 @@
 
                 <!-- Step 2 -->
                 <div class="relative group">
-                    <div class="w-24 h-24 mx-auto bg-slate-800 rounded-2xl border-2 border-slate-700 flex items-center justify-center mb-6 group-hover:border-purple-500 group-hover:shadow-[0_0_30px_rgba(168,85,247,0.3)] transition-all duration-300">
-                        <i data-lucide="cpu" class="w-10 h-10 text-purple-400"></i>
+                    <div class="w-24 h-24 mx-auto bg-slate-800 rounded-2xl border-2 border-slate-700 flex items-center justify-center mb-6 group-hover:border-teal-500 group-hover:shadow-[0_0_30px_rgba(20,184,166,0.3)] transition-all duration-300">
+                        <i data-lucide="cpu" class="w-10 h-10 text-teal-400"></i>
                     </div>
                     <div class="text-center">
-                        <div class="inline-block px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-xs font-bold mb-3">المرحلة الثانية</div>
+                        <div class="inline-block px-3 py-1 bg-teal-900/50 text-teal-300 rounded-full text-xs font-bold mb-3">المرحلة الثانية</div>
                         <h3 class="text-xl font-bold mb-2">بناء الوكيل الذكي</h3>
                         <p class="text-slate-400 text-sm leading-relaxed">نقوم بتدريب نماذج الذكاء الاصطناعي لتقليد عملية اتخاذ القرار، وربطها بأنظمة الـ API وقواعد البيانات الخاصة بك.</p>
                     </div>
@@ -183,11 +186,11 @@
 
                 <!-- Step 3 -->
                 <div class="relative group">
-                    <div class="w-24 h-24 mx-auto bg-slate-800 rounded-2xl border-2 border-slate-700 flex items-center justify-center mb-6 group-hover:border-green-500 group-hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] transition-all duration-300">
-                        <i data-lucide="rocket" class="w-10 h-10 text-green-400"></i>
+                    <div class="w-24 h-24 mx-auto bg-slate-800 rounded-2xl border-2 border-slate-700 flex items-center justify-center mb-6 group-hover:border-white group-hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] transition-all duration-300">
+                        <i data-lucide="rocket" class="w-10 h-10 text-white"></i>
                     </div>
                     <div class="text-center">
-                        <div class="inline-block px-3 py-1 bg-green-900/50 text-green-300 rounded-full text-xs font-bold mb-3">المرحلة الثالثة</div>
+                        <div class="inline-block px-3 py-1 bg-slate-700 text-white rounded-full text-xs font-bold mb-3">المرحلة الثالثة</div>
                         <h3 class="text-xl font-bold mb-2">الإطلاق والقياس</h3>
                         <p class="text-slate-400 text-sm leading-relaxed">نطلق الوكيل للعمل 24/7، مع لوحة تحكم حية لمتابعة الأداء، واكتشاف الأخطاء وتصحيحها تلقائياً.</p>
                     </div>
@@ -206,7 +209,7 @@
                 <!-- Client Card 1 -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:-translate-y-1 transition-transform duration-300">
                     <div class="flex items-center gap-4 mb-6 border-b border-slate-100 pb-4">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center font-bold text-blue-600">L</div>
+                        <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center font-bold text-emerald-600">L</div>
                         <div>
                             <h4 class="font-bold text-slate-900">لوجستيكس السعودية</h4>
                             <p class="text-xs text-slate-500">قطاع النقل والإمداد</p>
@@ -222,16 +225,16 @@
                     <p class="text-slate-600 text-sm leading-relaxed italic mb-6">
                         "كنا نعاني من تأخير فواتير الموردين لمدة أسبوعين. بعد تدخل SIS، أصبحت الفواتير تُعالج وتُدقق وتُدفع في أقل من 4 ساعات. التحول كان سحرياً."
                     </p>
-                    <div class="bg-blue-50 rounded-lg p-4">
+                    <div class="bg-emerald-50 rounded-lg p-4">
                         <div class="text-xs font-bold text-slate-500 uppercase">النتيجة المحققة</div>
-                        <div class="font-bold text-blue-700 text-lg">توفير 40 ساعة/أسبوعياً</div>
+                        <div class="font-bold text-emerald-700 text-lg">توفير 40 ساعة/أسبوعياً</div>
                     </div>
                 </div>
 
                 <!-- Client Card 2 -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:-translate-y-1 transition-transform duration-300">
                     <div class="flex items-center gap-4 mb-6 border-b border-slate-100 pb-4">
-                        <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center font-bold text-indigo-600">F</div>
+                        <div class="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center font-bold text-teal-600">F</div>
                         <div>
                             <h4 class="font-bold text-slate-900">فيوتشر تك للمالية</h4>
                             <p class="text-xs text-slate-500">التقنية المالية (FinTech)</p>
@@ -247,16 +250,16 @@
                     <p class="text-slate-600 text-sm leading-relaxed italic mb-6">
                         "دقة البيانات كانت هاجسنا الأكبر. الوكلاء الأذكياء قضوا على أخطاء الإدخال اليدوي تماماً. الآن فريقنا يركز على الاستراتيجية بدلاً من إدخال البيانات."
                     </p>
-                    <div class="bg-indigo-50 rounded-lg p-4">
+                    <div class="bg-teal-50 rounded-lg p-4">
                         <div class="text-xs font-bold text-slate-500 uppercase">النتيجة المحققة</div>
-                        <div class="font-bold text-indigo-700 text-lg">دقة بيانات 99.9%</div>
+                        <div class="font-bold text-teal-700 text-lg">دقة بيانات 99.9%</div>
                     </div>
                 </div>
 
                 <!-- Client Card 3 -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:-translate-y-1 transition-transform duration-300">
                     <div class="flex items-center gap-4 mb-6 border-b border-slate-100 pb-4">
-                        <div class="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center font-bold text-teal-600">R</div>
+                        <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center font-bold text-slate-600">R</div>
                         <div>
                             <h4 class="font-bold text-slate-900">ريتيل بلس</h4>
                             <p class="text-xs text-slate-500">التجارة الإلكترونية</p>
@@ -272,9 +275,9 @@
                     <p class="text-slate-600 text-sm leading-relaxed italic mb-6">
                         "خدمة العملاء لدينا تحسنت بشكل ملحوظ. الوكيل الذكي يرد على الاستفسارات الروتينية فوراً، مما رفع معدل رضا عملائنا بشكل كبير."
                     </p>
-                    <div class="bg-teal-50 rounded-lg p-4">
+                    <div class="bg-slate-100 rounded-lg p-4">
                         <div class="text-xs font-bold text-slate-500 uppercase">النتيجة المحققة</div>
-                        <div class="font-bold text-teal-700 text-lg">زيادة المبيعات 25%</div>
+                        <div class="font-bold text-slate-700 text-lg">زيادة المبيعات 25%</div>
                     </div>
                 </div>
 
@@ -283,11 +286,11 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 px-6 bg-gradient-to-br from-blue-600 to-indigo-700 text-white text-center">
+    <section class="py-16 px-6 bg-gradient-to-br from-emerald-600 to-teal-900 text-white text-center">
         <div class="max-w-3xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-black mb-6">هل أنت جاهز لكتابة قصة نجاحك؟</h2>
-            <p class="text-blue-100 text-lg mb-8">دعنا نحلل سير عملك مجاناً ونوضح لك حجم التوفير المتوقع.</p>
-            <button class="bg-white text-blue-700 font-bold px-10 py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center gap-2 mx-auto">
+            <p class="text-emerald-100 text-lg mb-8">دعنا نحلل سير عملك مجاناً ونوضح لك حجم التوفير المتوقع.</p>
+            <button onclick="Typebot.open()" class="bg-white text-emerald-700 font-bold px-10 py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center gap-2 mx-auto">
                 <i data-lucide="calendar-check" class="w-5 h-5"></i>
                 احجز استشارة مجانية
             </button>
@@ -334,7 +337,7 @@
                 }, {
                     label: 'مع وكيل SIS',
                     data: [10, 5, 15, 40],
-                    backgroundColor: '#3b82f6', // Blue 500
+                    backgroundColor: '#10b981', // Emerald 500
                     borderRadius: 6
                 }]
             },
@@ -361,15 +364,15 @@
                 datasets: [{
                     label: 'حجم العمليات (المعاملات)',
                     data: [1000, 1500, 2200, 3500, 4800, 6000],
-                    borderColor: '#22c55e', // Green
-                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    borderColor: '#10b981', // Emerald 500
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
                     fill: true,
                     tension: 0.4,
                     yAxisID: 'y'
                 }, {
                     label: 'التكلفة التشغيلية',
                     data: [5000, 5200, 5300, 5400, 5450, 5500],
-                    borderColor: '#ef4444', // Red
+                    borderColor: '#0f172a', // Slate 900
                     borderDash: [5, 5],
                     tension: 0.4,
                     yAxisID: 'y1'
