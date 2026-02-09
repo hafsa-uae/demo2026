@@ -45,7 +45,6 @@
         typebot-standard {
             z-index: 9999;
         }
-
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 overflow-x-hidden">
@@ -55,50 +54,79 @@
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <!-- LOGO INSERTION -->
-                <img src="logo.png" alt="SIS AI Logo" class="h-12 w-auto object-contain rounded-lg">
+                <img src="logo.png" alt="SIS AI Logo" class="h-12 w-auto object-contain rounded-lg" onerror="this.style.display='none'">
                 <span class="font-bold text-2xl tracking-tight text-slate-900">SIS AI</span>
             </div>
             <div class="hidden md:flex gap-6 items-center">
                 <a href="https://www.saidiautomation.com" class="text-sm font-bold text-slate-600 hover:text-emerald-600 transition-colors">الرئيسية</a>
-                <!-- Updated Button Color -->
-           </div>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero: Impact Summary -->
+    <!-- Hero: Impact Summary with Video -->
     <section class="pt-20 pb-16 px-6 relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl">
-            <!-- Updated Blob Colors -->
+            <!-- Background Blobs -->
             <div class="absolute top-20 right-10 w-64 h-64 bg-emerald-200/30 rounded-full blur-3xl"></div>
             <div class="absolute bottom-10 left-10 w-80 h-80 bg-teal-200/30 rounded-full blur-3xl"></div>
         </div>
 
-        <div class="max-w-4xl mx-auto text-center relative z-10 fade-in-up">
-            <h1 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 leading-tight">
-                لا نبيع مجرد "برمجيات"،<br>نحن نصنع <span class="gradient-text">نتائج ملموسة</span>.
-            </h1>
-            <p class="text-xl text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
-                اطلع على بيانات حقيقية توضح كيف قمنا بتحويل عمليات عملائنا من الفوضى اليدوية إلى دقة الأتمتة الذكية.
-            </p>
+        <div class="max-w-7xl mx-auto relative z-10 fade-in-up">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                
+                <!-- Right Side: Text & Stats -->
+                <div class="w-full lg:w-1/2 text-right">
+                    <h1 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 leading-tight">
+                        لا نبيع مجرد "برمجيات"،<br>نحن نصنع <span class="gradient-text">نتائج ملموسة</span>.
+                    </h1>
+                    <p class="text-xl text-slate-500 mb-10 leading-relaxed">
+                        اطلع على بيانات حقيقية توضح كيف قمنا بتحويل عمليات عملائنا من الفوضى اليدوية إلى دقة الأتمتة الذكية.
+                    </p>
 
-            <!-- Key Metrics Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-100">
-                    <div class="text-4xl font-black text-emerald-600 mb-2">95%</div>
-                    <div class="text-sm font-bold text-slate-600">توفير في الوقت</div>
+                    <!-- Key Metrics Grid -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-5 bg-white rounded-2xl shadow-sm border border-slate-100 text-center hover:shadow-md transition-shadow">
+                            <div class="text-3xl font-black text-emerald-600 mb-1">95%</div>
+                            <div class="text-xs font-bold text-slate-600">توفير في الوقت</div>
+                        </div>
+                        <div class="p-5 bg-white rounded-2xl shadow-sm border border-slate-100 text-center hover:shadow-md transition-shadow">
+                            <div class="text-3xl font-black text-teal-600 mb-1">0%</div>
+                            <div class="text-xs font-bold text-slate-600">أخطاء بشرية</div>
+                        </div>
+                        <div class="p-5 bg-white rounded-2xl shadow-sm border border-slate-100 text-center hover:shadow-md transition-shadow">
+                            <div class="text-3xl font-black text-emerald-500 mb-1">3x</div>
+                            <div class="text-xs font-bold text-slate-600">زيادة الإنتاجية</div>
+                        </div>
+                        <div class="p-5 bg-white rounded-2xl shadow-sm border border-slate-100 text-center hover:shadow-md transition-shadow">
+                            <div class="text-3xl font-black text-slate-700 mb-1">24/7</div>
+                            <div class="text-xs font-bold text-slate-600">عمل متواصل</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-100">
-                    <div class="text-4xl font-black text-teal-600 mb-2">0%</div>
-                    <div class="text-sm font-bold text-slate-600">أخطاء بشرية</div>
+
+                <!-- Left Side: Video Container -->
+                <div class="w-full lg:w-1/2">
+                    <div class="relative group">
+                        <!-- Decorative glow behind video -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+                        
+                        <!-- Video Frame -->
+                        <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
+                            <video 
+                                src="SIS-ai.mp4" 
+                                class="w-full h-auto object-cover"
+                                autoplay 
+                                loop 
+                                muted 
+                                playsinline
+                                controls
+                            >
+                                متصفحك لا يدعم تشغيل الفيديو.
+                            </video>
+                        </div>
+                    </div>
                 </div>
-                <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-100">
-                    <div class="text-4xl font-black text-emerald-500 mb-2">3x</div>
-                    <div class="text-sm font-bold text-slate-600">زيادة الإنتاجية</div>
-                </div>
-                <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-100">
-                    <div class="text-4xl font-black text-slate-700 mb-2">24/7</div>
-                    <div class="text-sm font-bold text-slate-600">عمل متواصل</div>
-                </div>
+
             </div>
         </div>
     </section>
@@ -406,19 +434,19 @@
         });
     </script>
 
-      <!-- TYPEBOT SCRIPT START -->
- <script type="module">
+    <!-- TYPEBOT SCRIPT START -->
+    <script type="module">
         import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3.4/dist/web.js'
-      
+        
         Typebot.initPopup({
-          typebot: "lead-magnet-9lv82d7",
-          apiHost: "https://typebot-viewer.panel.saidiautomation.com",
+            typebot: "lead-magnet-9lv82d7",
+            apiHost: "https://typebot-viewer.panel.saidiautomation.com",
         });
 
         // Attach Typebot to window to allow button clicks to open it
         window.Typebot = Typebot;
-      </script>
-      <!-- TYPEBOT SCRIPT END -->    
+    </script>
+    <!-- TYPEBOT SCRIPT END -->    
 
 </body>
 </html>
